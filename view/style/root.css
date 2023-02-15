@@ -1,0 +1,31 @@
+    /*
+     * Déclaration et définition de toutes les variables/valeurs du design +
+     * design des objets récurrents
+     */
+
+     :root {
+        /* couleurs */
+
+        /* Background/texte */
+        --dark: rgb(17, 16, 16);
+        --dark2: rgb(46, 42, 46);
+        --blanc: rgb(244, 245, 252);
+        --blanc2: rgb(213, 213, 228);
+        /* palette du design */
+        --couleur1: #94c9a8;
+        --couleur1: #4d5834;
+        --couleur3: #330F0A;
+        --couleur4: #CEB3AB;
+        --couleur5: #788AA3;
+    
+
+        /* typos */
+
+        --font-principale: 'Barlow', system-ui, sans-serif;
+        --font-display: 'Koulen', 'Tahoma', 'Trebuchet MS', system-ui, sans-serif;
+        /* graisse */
+        --ft-principale-light: 300;
+        --ft-principale-normal: 400;
+        --ft-principale-bold: 600;
+    
+    }
