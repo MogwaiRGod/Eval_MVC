@@ -4,7 +4,7 @@
 
 /* modules */
 const express = require("express"); 
-const bodyParser = require("body-parser");
+const bodyParser = require("body-parser"); 
 /*
  * import du module cors (Cross-origin resource sharing) qui permet d'autoriser l'accès à des donnée d'une page-web à une application :
  * cela va nous permettre d'autoriser à notre API de traiter les requêtes envoyées par le dashboard

@@ -4,6 +4,8 @@
 
 // import des fonctions du controller
 const controllers = require('../controller/generic_controller');
+// import de la fonction de base de manipulate_files
+const manipFiles = require('../utils/manipulate_files.js');
 // import du module express
 const express = require("express");
 
@@ -39,19 +41,39 @@ router.delete('/', controllers.testRoute);
 router.post('/library/:service', controllers.addAlbum);
 
 // route permettant de demander à ajouter un album selon le service (abonnement, fichier local...) et l'ID de l'album
-// router.post('/library/:service/:id', controllers.addAlbum);
+router.post('/library/:service/:id', controllers.addAlbum);
 
 
 /*
  * GET
  */
 
-// route permettant de demander à afficher l'intégralité de la bibliothèque de l'utilisateur
-// router.get('/library', controllers.readLibrary);
+/* 
+ * AFFICHAGE
+ */
 
-// route permettant de demander à afficher 
-router.get('/library/:service', controllers.readLibraryFilter);
-router.get('/library/:service/:platform', controllers.readLibraryFilter);
+// route permettant de demander à afficher l'intégralité de la bibliothèque de l'utilisateur
+router.get('/library', controllers.readLibrary);
+
+// // route permettant de demander à afficher une bibliothèque selon le service (abonnement, fichier local)
+router.get('/library/:service', controllers.readLibrary);
+
+// // route permettant de demander à afficher une bibliothèque selon le service ET la plateforme (Spotify, iTunes...)
+router.get('/library/:service/:platform', controllers.readLibrary);
+
+// // route permettant de demander à afficher un album selon le service ET son ID
+router.get('/library/id/:service/:id', controllers.readLibrary);
+
+/* 
+ * RECHERCHE
+ */
+
+// route qui permet d'effectuer une recherche dans la bibliothèque complète, selon un nom
+router.get('/library_search/:name', controllers.searchLibrary);
+
+// route qui permet d'effectuer une recherche selon un type de service et un nom entré
+router.get('/library_search/filter/:service/:name', controllers.searchLibrary);
+
 
 
 /*

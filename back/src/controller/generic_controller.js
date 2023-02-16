@@ -1,16 +1,13 @@
 /*
  * VARIABLES
  */
-// chemin du jeu de données contenant les informations sur la musique de l'utilisateur
-const menu = './src/model/data.json';   
+
 
 
 /*
  * IMPORTS
  */
-// file system
-const fs = require('fs'); 
-// fonctions du controller
+// fonctions utiles au controller
 const manipFiles = require('../utils/manipulate_files');
 
 /*
@@ -31,42 +28,47 @@ exports.testRoute = (request, response) => {
  * CEATE
  */
 
-// fonction pour créer (ajouter) un album à la bibliothèque de l'utilisateur, sans préciser son ID (calcul automatique)
+// fonction pour créer (ajouter) un album à la bibliothèque de l'utilisateur, avec son ID spécifié ou non
 exports.addAlbum = (request, response) => {
-    console.log("ok")
-} // FIN ADD ALBUM
+    // si un ID est spécifié, on le sélectionne
+    const id = request.params.id;
+    const name = request.body.name;
+    const artist = request.body.artist;
+    const platform = request.body.platform;
+    const service = request.params.service;
+    const action = "add";
 
-// fonction pour créer (ajouter) un album à la bibliothèque de l'utilisateur, en précisant son ID
-exports.addAlbumId = (request, response) => {
-    
-} // FIN ADD ALBUM ID
+    // on ajoute l'élément à la BDD
+    manipFiles.addAlbum(response, name, artist, platform, service, action, id);
+} // FIN ADD ALBUM
 
 
 /*
  * READ
  */
 
-// fonction qui affiche l'intégralité de la bibliothèque de l'utilisateur
+// fonction qui affiche des données de la bibliothèque
 exports.readLibrary = (request, response) => {
-
-} // FIN READ LIBRARY
-
-// fonction qui affiche la bibliothèque de l'utilisateur selon un service et (optionnel) une plateforme
-exports.readLibraryFilter = (request, response) => {
+    // on récupère les arguments éventuels
     const service = request.params.service;
     const platform = request.params.platform;
-    console.log(service, platform)
-    response.status(200).send({message: "L'algo fonctionne GG"});
-}
+    const id = request.params.id;
 
+    // on affiche ce qui est demandé
+    manipFiles.readFile(response, service, platform, id);
+    console.log("not ok")
+    return;
+} // FIN READ LIBRARY
 
-/* 
-* fonction qui recherche et affiche le resultat de la recherche, selon 0 ou plusieurs filtres
-* 0 filtres => cherche dans toute la bibliothèque ;
-* avec filtres : le service (abonnement, local) 
-* et (optionnel) la plateforme qui propose la musique (Spotify, Amazon Music...)
-* /
+exports.searchLibrary = (request, response) => {
+    // récupération des arguments
+    const service = request.params.service;
+    const name = request.params.name;
 
+    // on effectue la recherche et affiche le résultat
+    manipFiles.searchAlbum(response, name, service);
+    return;
+} // SEARCH LIBRARY
 
 /*
  * UPDATE
