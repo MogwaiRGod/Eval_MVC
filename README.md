@@ -1,9 +1,9 @@
-Nom du projet
+Totify
 ===
 Plateforme centrale de gestion et d'écoute de musique
 ---
 
-_Application centralisant toute la musique de l'utilisateur en provenance d'autres plateformes, ainsi que la musique importée localement._
+> Application centralisant toute la musique de l'utilisateur en provenance d'autres plateformes, ainsi que la musique importée localement.
 
 ### Auteur
 Diane (Mogw4i)
@@ -39,16 +39,18 @@ Diane (Mogw4i)
 ### **Modules**
 |Module|Version|Utilisation|
 |----|----|----|
-| express || |
-| fs | | |
-| body-parser | | |
-| cors | | |
+| express | 4.18.2 | |
+| fs | 0.0.1-security | |
+| body-parser | 1.20.1 | |
+| cors | 2.8.5 | |
+
+// à remplir
 
 ## Fonctionnement
 
 ### **Projet**
-**{Nom} est une application permettant de gérer et d'écouter ses albums provenant de diverses plateformes (de streaming, d'e-commerce), sur une seule application les centralisant toutes.** <br>
-Application **client-serveur**, c'est-à-dire consistant en une partie front et une partie back distinctes. <br>
+> **Totify** est une application permettant de gérer et d'écouter ses albums provenant de diverses plateformes (de streaming, d'e-commerce), sur une seule application les centralisant toutes. <br>
+> Application **client-serveur**, c'est-à-dire consistant en une partie front et une partie back distinctes. <br>
 * La partie **front** est l'interface client permettant de gérer ses albums de musique, en les modifiant, les supprimant, en en ajoutant...
 * La partie **back** consiste en une API type traitant des requêtes envoyées par la partie client. L'API va traiter les requêtes en appliquant des actions de type CRUD à la base de données.
 
@@ -125,6 +127,6 @@ graph TD
 |---|---|---|
 || **index.html** | Accueil de l'**interface** client |
 | /scripts |**main.js**| Fichier contenant toutes les **fonctions** de traitement des requêtes côté client <=> lien avec l'API back-end |
-| /style | - **root.css** <br> - **style.css** | **Feuilles de style** de l'interface client <br> root.css contient toute la base du design (couleurs...) et le design des objets réutilisables (boutons, menus...) ; style.css contient la mise en page globale |
+| /style | - **root.css** <br> - **style.css** | **Feuilles de style** de l'interface client <br> __root.css__ contient toute la base du design (couleurs...) et le design des objets réutilisables (boutons, menus...) ainsi que des parties du site récurrentes (footer, nav...) ; __style.css__ contient la mise en page globale |
 
-Le dossier imgs contient les images affichées sur le site.
+Le dossier **/imgs** contient les images affichées sur le site.

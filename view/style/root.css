@@ -1,6 +1,6 @@
     /*
      * Déclaration et définition de toutes les variables/valeurs du design +
-     * design des objets récurrents
+     * design des objets récurrents (e.g menus dropdown) et des parties réutilisables (e.g footer)
      */
 
      :root {
@@ -29,3 +29,9 @@
         --ft-principale-bold: 600;
     
     }
+
+/* Objets récurrents */
+
+ul {
+    list-style-type: none;
+}
