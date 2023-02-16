@@ -87,7 +87,7 @@ exports.readFile = (resp, service, platform, id) => {
                 resp.status(200).send(existingData[service]);
             } else if (service && platform && !id){
                 // si on a demandé à afficher que par service ET plateform
-                resp.status(200).send(existingData[service].filter(album => album.platform === platform));
+                resp.status(200).send(existingData[service].filter(album => album.platform.toLowerCase() === platform.toLowerCase()));
             } else {
                 // si on a demandé à afficher par service et id
                 resp.status(200).send(existingData[service].filter(album => album.id === parseInt(id)));

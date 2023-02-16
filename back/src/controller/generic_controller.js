@@ -56,7 +56,6 @@ exports.readLibrary = (request, response) => {
 
     // on affiche ce qui est demandé
     manipFiles.readFile(response, service, platform, id);
-    console.log("not ok")
     return;
 } // FIN READ LIBRARY
 
@@ -70,14 +69,22 @@ exports.searchLibrary = (request, response) => {
     return;
 } // SEARCH LIBRARY
 
+
 /*
  * UPDATE
  */
 
 // fonction qui met à jour une ou plusieurs données d'un album selon son ID
+exports.updateAlbum = (request, response) => {
+    return;
+} // FIN UPDATE ALBUM
+
 
 /*
  * DELETE
  */
 
 // fonction qui supprime un album sélectionné par un son ID
+exports.deleteAlbum = (request, response) => {
+    return;
+} // FIN DELETE ALBUM
