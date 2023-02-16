@@ -12,7 +12,7 @@ const bodyParser = require("body-parser");
 const cors = require('cors');
 
 /* router */
-// const router = require('./src/routes/generic_routes.js');
+const router = require('./src/routes/generic_routes.js');
 
 
 
@@ -36,7 +36,7 @@ api.use(cors());
  *  l'API consiste en traiter des requêtes ; elle a juste besoin d'effectuer ce qui est demandé via des routes,
  * donc elle ne fait qu'utiliser le router 
  */ 
-// api.use(router);
+api.use(router);
 
 
 

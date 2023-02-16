@@ -1,18 +1,18 @@
 {
     "membership": [
-        {"id": 0, "name": "Truth Decay" , "artist": "You Me at Six" , "service": "Spotify" },
-        {"id": 1, "name": "RUSH!" , "artist": "Måneskin" , "service": "Spotify" },
-        {"id": 2, "name": "SUCKAPUNCH" , "artist": "You Me at Six" , "service": "Deezer" },
-        {"id": 3, "name": "Anywhere But Here" , "artist": "Sorry" , "service": "Deezer" },
-        {"id": 4, "name": "You Heat Me Up, You Cool Me Down" , "artist": "King Krule" , "service": "YouTube Music" }
+        {"id": 0, "name": "Truth Decay" , "artist": "You Me at Six" , "plateforme": "Spotify" },
+        {"id": 1, "name": "RUSH!" , "artist": "Måneskin" , "plateforme": "Spotify" },
+        {"id": 2, "name": "SUCKAPUNCH" , "artist": "You Me at Six" , "plateforme": "Deezer" },
+        {"id": 3, "name": "Anywhere But Here" , "artist": "Sorry" , "plateforme": "Deezer" },
+        {"id": 4, "name": "You Heat Me Up, You Cool Me Down" , "artist": "King Krule" , "plateforme": "YouTube Music" }
     ],
 
     "purchases": [
-        {"id": 0, "name": "Drunk Tank Pink" , "artist": "Shame" , "service": "Bandcamp" },
-        {"id": 1, "name": "925" , "artist": "Sorry" , "service": "Bandcamp" },
-        {"id": 2, "name": "Desire" , "artist": "Come to Dolly" , "service": "Bandcamp" },
-        {"id": 3, "name": "Blue Banisters" , "artist": "Lana Del Rey" , "service": "Amazon Music" },
-        {"id": 4, "name": "How Did We Get So Dark" , "artist": "Royal Blood" , "service": "iTunes"}
+        {"id": 0, "name": "Drunk Tank Pink" , "artist": "Shame" , "plateforme": "Bandcamp" },
+        {"id": 1, "name": "925" , "artist": "Sorry" , "plateforme": "Bandcamp" },
+        {"id": 2, "name": "Desire" , "artist": "Come to Dolly" , "plateforme": "Bandcamp" },
+        {"id": 3, "name": "Blue Banisters" , "artist": "Lana Del Rey" , "plateforme": "Amazon Music" },
+        {"id": 4, "name": "How Did We Get So Dark" , "artist": "Royal Blood" , "plateforme": "iTunes"}
     ],
 
     "local": [
