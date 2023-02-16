@@ -15,7 +15,7 @@ const manipFiles = require('../utils/manipulate_files');
  */
 
 // fonction de test de route
-exports.testRoute = (request, response) => {
+exports.testRoute = (req, response) => {
     response.status(200).send({message: "La route est fonctionnelle !"});
 } // FIN TEST ROUTE
 
@@ -32,14 +32,11 @@ exports.testRoute = (request, response) => {
 exports.addAlbum = (request, response) => {
     // si un ID est spécifié, on le sélectionne
     const id = request.params.id;
-    const name = request.body.name;
-    const artist = request.body.artist;
-    const platform = request.body.platform;
+    const body = request.body;
     const service = request.params.service;
     const action = "add";
-
     // on ajoute l'élément à la BDD
-    manipFiles.addAlbum(response, name, artist, platform, service, action, id);
+    manipFiles.addAlbum(response, body, service, action, id);
 } // FIN ADD ALBUM
 
 
@@ -76,6 +73,13 @@ exports.searchLibrary = (request, response) => {
 
 // fonction qui met à jour une ou plusieurs données d'un album selon son ID
 exports.updateAlbum = (request, response) => {
+    // récupération des arguments/données du corps de requête
+    const id = request.params.id;
+    const body = request.body;
+    const service = request.params.service;
+    const action = "upd";
+
+    manipFiles.updateAlbum(response, service, id, body, action);
     return;
 } // FIN UPDATE ALBUM
 
@@ -86,5 +90,10 @@ exports.updateAlbum = (request, response) => {
 
 // fonction qui supprime un album sélectionné par un son ID
 exports.deleteAlbum = (request, response) => {
+    const id = request.params.id;
+    const service = request.params.service;
+    const action = "del";
+
+    manipFiles.deleteAlbum(response, service, id, action);
     return;
 } // FIN DELETE ALBUM

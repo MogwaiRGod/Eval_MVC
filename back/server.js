@@ -1,5 +1,5 @@
 const api = require("./app.js");
-const port = 3000;
+const port = 80;
 
 // listen() va requêter le port entré en argument pour faire tourner API
 api.listen(port, () => {

@@ -18,6 +18,7 @@ const errors =
     "404_id": "Aucun album trouvé avec cet id",
     "404_nom": "Aucun album trouvé avec ce nom",
     "404_vide": "Le filtre n'a donné aucun résultat",
+    "404_tab": "La bibliothèque demandée est vide",
     // erreur 500
     "500_lecture": "Une erreur est survenue lors de la lecture des données",
     "500_ecriture": "Une erreur est survenue lors de l'écriture des données",
@@ -81,16 +82,51 @@ exports.readFile = (resp, service, platform, id) => {
             const existingData = JSON.parse(data);
             // si on a demandé à afficher l'intégralité de la bibliothèque, sans filtre
             if (!platform & !service) {
+                // si la bibliothèque est vide
+                if (!existingData.length){
+                    resp.status(404).send({message: errors["404_tab"]});
+                    return;
+                } 
                 resp.status(200).send(existingData);
             } else if (service && !platform && !id){
                 // si on n'a demandé à afficher que par service
-                resp.status(200).send(existingData[service]);
+                // on vérifie que le tableau n'est pas vide
+                if (!existingData[service].length){
+                    resp.status(404).send({message: errors["404_tab"]});
+                    return;
+                } else {
+                    resp.status(200).send(existingData[service]);
+                }
             } else if (service && platform && !id){
                 // si on a demandé à afficher que par service ET plateform
-                resp.status(200).send(existingData[service].filter(album => album.platform.toLowerCase() === platform.toLowerCase()));
+                // on vérifie que le tableau n'est pas vide
+                if (!existingData[service].length){
+                    resp.status(404).send({message: errors["404_tab"]});
+                    return;
+                } else {
+                    // on sélectionne tous les albums étant sur la plateforme demandée
+                    const albums = existingData[service].filter(album => album[platform].toLowerCase() === platform.toLowerCase());
+                    if (albums === undefined) {
+                        resp.status(404).send({message: errors["404_vide"]});
+                    } else {
+                        resp.status(200).send(albums);
+                    }
+                }
             } else {
                 // si on a demandé à afficher par service et id
-                resp.status(200).send(existingData[service].filter(album => album.id === parseInt(id)));
+                // on vérifie que le tableau n'est pas vide
+                if (!existingData[service].length){
+
+                    resp.status(404).send({message: errors["404_tab"]});
+                    return;
+                } 
+                // et on vérifie que l'ID demandé est bien attribué
+                const album = existingData[service].filter(album => album[id] === parseInt(id));
+                if (album === undefined) {
+                    resp.status(404).send({message: errors["404_id"]});
+                    return;
+                }
+                resp.status(200).send(album);
             }
         }
     }); // FIN FS READFILE
@@ -180,13 +216,14 @@ exports.searchAlbum = (resp, name, service) => {
     });
 } // FIN SEARCH ALBUM
 
-exports.addAlbum = (resp, name, artist, platform, service, action, id) => {
+exports.addAlbum = (resp, body, service, action, id) => {
     fs.readFile(document, (error, data) => {
         if (this.caseError(error, resp, 'lecture')) {
             return;
         } else {
             let existingData = JSON.parse(data);
             // si le tableau est vide
+
             if (!existingData[service]) {
                 id = 0;
             } else {
@@ -202,8 +239,9 @@ exports.addAlbum = (resp, name, artist, platform, service, action, id) => {
                 }
                 
                 // création de l'item
-                const album = this.createAlbum(id, name, artist, platform);
-                // console.log(existingData[service]);
+                const album = body;
+                album["id"] = id;
+                
                 // on l'ajoute à la BDD, dans le tableau attendu
                 existingData[service].push(album);
                 // réécriture des données
@@ -234,11 +272,55 @@ exports.defineId = (objs) => {
     return Math.max(...ids) + 1;
 }
 
-exports.createAlbum = (id, name, artist, platform) => {
-    let album = {"id": parseInt(id), "name": name, "artist": artist};
-    // si une plateforme est spécifiée
-    if (platform) {
-        album["platform"] = platform;
-    }
-    return album;
+exports.updateAlbum = (resp, service, id, body, action) => {
+    fs.readFile(document, (error, data) => {
+        if (this.caseError(error, resp, 'lecture')) {
+            return;
+        } else {
+            const existingData = JSON.parse(data);
+            // si le tableau est vide
+            if (!existingData[service].length) {
+                resp.status(200).send({message: errors["404_tab"]});
+                return;
+            } else {
+                // sélection de l'item
+                let album = existingData[service].find(e => e.id === parseInt(id));
+                // màj de l'item
+                for (let prop in body){
+                    album[prop] = body[prop];
+                }
+            }
+            // réécriture des données
+            this.writeFile(document,JSON.stringify(existingData), resp, action);
+        }
+    return;
+    });
+} // FIN UPDATE ALBUM
+
+exports.deleteAlbum = (resp, service, id, action) => {
+    fs.readFile(document, (error, data) => {
+        if (this.caseError(error, resp, 'lecture')) {
+            return;
+        } else {
+            const existingData = JSON.parse(data);
+            // si le tableau est vide
+            if (!existingData[service].length) {
+                resp.status(200).send({message: errors["404_tab"]});
+                return;
+            } else {
+                // on détermine l'index de l'item dans le tableau
+                const index = existingData[service].findIndex(e => e.id === parseInt(id));
+                // si l'ID ne correspond à aucun élément
+                if (index === -1) {
+                    resp.status(200).send({message: errors["404_id"]});
+                    return;
+                }
+                console.log(index)
+                existingData[service].splice(index, 1);
+                // réécriture des données
+                this.writeFile(document, JSON.stringify(existingData), resp, action);
+            }
+        }
+    });
+    return;
 }

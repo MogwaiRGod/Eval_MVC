@@ -69,7 +69,7 @@ router.get('/library/:service/:platform', controllers.readLibrary);
 
 // // route permettant de demander à afficher un album selon le service ET son ID
 // e.g http://localhost:3000/library/membership/1
-router.get('/library/id/:service/:id', controllers.readLibrary);
+router.get('/library_id/:service/:id', controllers.readLibrary);
 
 /* 
  * RECHERCHE
@@ -99,7 +99,7 @@ router.put('/library/:service/:id', controllers.updateAlbum);
 
 // route permettant de mettre à jour un album sélectionné par son id et le service qui le propose
 // e.g http://localhost:3000/library/local/2
-router.delete('/library/:service/:id', controllers.updateAlbum);
+router.delete('/library/:service/:id', controllers.deleteAlbum);
 
 
 
