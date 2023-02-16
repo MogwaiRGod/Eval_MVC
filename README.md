@@ -20,7 +20,10 @@ Diane (Mogw4i)
         2. [Installation](#installation)
 2. [Contenu](#contenu)
     1. [Organigramme](#organigramme-du-projet)
-    1. [Contenu détaillé](#contenu-détaillé)
+    2. [Contenu détaillé](#contenu-détaillé)
+3. Fonctionnement
+    1. Back
+    2. Front
 
 <br>
 <hr>
@@ -38,12 +41,10 @@ Diane (Mogw4i)
 ### **Modules**
 |Module|Version|Utilisation|
 |----|----|----|
-| express | 4.18.2 | |
-| fs | 0.0.1-security | |
-| body-parser | 1.20.1 | |
-| cors | 2.8.5 | |
-
-// à remplir
+| __express__ | 4.18.2 | Module contenant des fonctionnalités pour les applications web = pour les reqûetes HTTP => contient des fonctions telles que get(), use()... |
+| __fs__ | 0.0.1-security | Module permettant de manipuler des __fichiers__ |
+| __body-parser__ | 1.20.1 | Middleware utile à __express__, lui permetttant de créer/lire/manipuler des __requêtes HTTP POST__ |
+| __cors__ | 2.8.5 | Module __rechargeant automatiquement__ l'application à chaque changement (sauvegarde) d'un des fichiers qui la composent |
 
 ## Fonctionnement
 
@@ -134,3 +135,18 @@ graph TD
 | /style | - **root.css** <br> - **style.css** | **Feuilles de style** de l'interface client <br> __root.css__ contient toute la base du design (couleurs...) et le design des objets réutilisables (boutons, menus...) ainsi que des parties du site récurrentes (footer, nav...) <br> __style.css__ contient la mise en page globale |
 
 Le dossier **/imgs** contient les images affichées sur le site.
+
+<br>
+<hr>
+
+# Fonctionnement
+
+Partie back
+---
+
+{A rédiger}
+
+Partie front
+---
+
+{A rédiger}
