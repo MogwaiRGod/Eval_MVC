@@ -64,7 +64,7 @@ node -v
 npm start
 ```
 - ``rs`` pour redémarrer
-- ``rs`` pour quitter
+- ``CTRL+C`` pour quitter
 3. Ouvrir le dashboard : **index.html**
 
 <br>
