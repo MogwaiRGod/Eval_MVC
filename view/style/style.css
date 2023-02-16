@@ -1,0 +1,17 @@
+.main-logo {
+    color: var(--couleur1);
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: 30pt;
+    margin: 0;
+}
+
+#h1-totify {
+    font-size: 70pt;
+}
+
+#icon-main-logo{
+    fill: var(--couleur1);
+    width: 100px;
+    height: auto;
+}
