@@ -31,12 +31,11 @@ exports.testRoute = (req, response) => {
 // fonction pour créer (ajouter) un album à la bibliothèque de l'utilisateur, avec son ID spécifié ou non
 exports.addAlbum = (request, response) => {
     // si un ID est spécifié, on le sélectionne
-    const id = request.params.id;
+    const params = request.params;
     const body = request.body;
-    const service = request.params.service;
     const action = "add";
     // on ajoute l'élément à la BDD
-    manipFiles.addAlbum(response, body, service, action, id);
+    manipFiles.addAlbum(response, body, params, action);
 } // FIN ADD ALBUM
 
 
@@ -47,22 +46,19 @@ exports.addAlbum = (request, response) => {
 // fonction qui affiche des données de la bibliothèque
 exports.readLibrary = (request, response) => {
     // on récupère les arguments éventuels
-    const service = request.params.service;
-    const platform = request.params.platform;
-    const id = request.params.id;
+    const params = request.params;
 
     // on affiche ce qui est demandé
-    manipFiles.readFile(response, service, platform, id);
+    manipFiles.readFile(response, params);
     return;
 } // FIN READ LIBRARY
 
 exports.searchLibrary = (request, response) => {
     // récupération des arguments
-    const service = request.params.service;
-    const name = request.params.name;
+    const params = request.params;
 
     // on effectue la recherche et affiche le résultat
-    manipFiles.searchAlbum(response, name, service);
+    manipFiles.searchAlbum(response, params);
     return;
 } // SEARCH LIBRARY
 
@@ -74,12 +70,12 @@ exports.searchLibrary = (request, response) => {
 // fonction qui met à jour une ou plusieurs données d'un album selon son ID
 exports.updateAlbum = (request, response) => {
     // récupération des arguments/données du corps de requête
-    const id = request.params.id;
+    const params = request.params;
     const body = request.body;
-    const service = request.params.service;
     const action = "upd";
+    console.log(request.params)
 
-    manipFiles.updateAlbum(response, service, id, body, action);
+    manipFiles.updateAlbum(response, params, body, action);
     return;
 } // FIN UPDATE ALBUM
 
@@ -90,10 +86,9 @@ exports.updateAlbum = (request, response) => {
 
 // fonction qui supprime un album sélectionné par un son ID
 exports.deleteAlbum = (request, response) => {
-    const id = request.params.id;
-    const service = request.params.service;
+    const params = request.params;
     const action = "del";
 
-    manipFiles.deleteAlbum(response, service, id, action);
+    manipFiles.deleteAlbum(response, params, action);
     return;
 } // FIN DELETE ALBUM

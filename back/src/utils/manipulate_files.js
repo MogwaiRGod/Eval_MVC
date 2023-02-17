@@ -3,6 +3,7 @@
  */
 
 const { Console } = require('console');
+// pour manipuler des fichiers
 const fs = require('fs');
 
 
@@ -71,7 +72,7 @@ exports.caseError = (error_sys, resp, type) => {
  * le service, la plateforme, un nom entré...
  * c'est donc une fonction de recherche et d'affichage
  */
-exports.readFile = (resp, service, platform, id) => {
+exports.readFile = (resp, params) => {
     // lecture du document
     fs.readFile(document, (error, data) => {
         // si une erreur survient à la lecture
@@ -80,31 +81,31 @@ exports.readFile = (resp, service, platform, id) => {
         } else {
             const existingData = JSON.parse(data);
             // si on a demandé à afficher l'intégralité de la bibliothèque, sans filtre
-            if (!platform & !service) {
+            if (!params.platform & !params.service) {
                 // si la bibliothèque est vide
                 if (!existingData.length){
                     resp.status(404).send({message: errors["404_tab"]});
                     return;
                 } 
                 resp.status(200).send(existingData);
-            } else if (service && !platform && !id){
+            } else if (params.service && !params.platform && !params.id){
                 // si on n'a demandé à afficher que par service
                 // on vérifie que le tableau n'est pas vide
-                if (!existingData[service].length){
+                if (!existingData[params.service].length){
                     resp.status(404).send({message: errors["404_tab"]});
                     return;
                 } else {
-                    resp.status(200).send(existingData[service]);
+                    resp.status(200).send(existingData[params.service]);
                 }
-            } else if (service && platform && !id){
+            } else if (params.service && params.platform && !params.id){
                 // si on a demandé à afficher que par service ET plateform
                 // on vérifie que le tableau n'est pas vide
-                if (!existingData[service].length){
+                if (!existingData[params.service].length){
                     resp.status(404).send({message: errors["404_tab"]});
                     return;
                 } else {
                     // on sélectionne tous les albums étant sur la plateforme demandée
-                    const albums = existingData[service].filter(album => album[platform].toLowerCase() === platform.toLowerCase());
+                    const albums = existingData[params.service].filter(album => album["platform"].toLowerCase() === params.platform.toLowerCase());
                     // si le filtre n'a retourné aucun album
                     if (albums === undefined) {
                         resp.status(404).send({message: errors["404_vide"]});
@@ -115,13 +116,13 @@ exports.readFile = (resp, service, platform, id) => {
             } else {
                 // si on a demandé à afficher par service et id
                 // on vérifie que le tableau n'est pas vide
-                if (!existingData[service].length){
+                if (!existingData[params.service].length){
 
                     resp.status(404).send({message: errors["404_tab"]});
                     return;
                 } 
                 // et on vérifie que l'ID demandé est bien attribué
-                const album = existingData[service].filter(album => album[id] === parseInt(id));
+                const album = existingData[params.service].filter(album => album["id"] === parseInt(params.id));
                 if (album === undefined) {
                     resp.status(404).send({message: errors["404_id"]});
                     return;
@@ -153,31 +154,33 @@ exports.writeFile = (doc, data, resp, action) => {
     return;
 } // FIN WRITE FILE
 
-exports.addAlbum = (resp, body, service, action, id) => {
+// fonction permettant d'ajouter un album à la BDD
+exports.addAlbum = (resp, body, params, action) => {
     fs.readFile(document, (error, data) => {
         if (this.caseError(error, resp, 'lecture')) {
             return;
         } else {
             let existingData = JSON.parse(data);
             // si le tableau est vide
-            if (!existingData[service]) {
-                id = 0;
+            if (!existingData[params.service]) {
+                let id = 0;
             } else {
                 // si un id est spécifié
+                let id = params.id;
                 if (id) {
                     // on vérifie qu'il n'est pas déjà attribué
-                    if(this.checkId(id, existingData[service], resp)) {
+                    if(this.checkId(id, existingData[params.service], resp)) {
                         return;
                     }
                 } else {
                      // sinon, on calcule un nouvel ID
-                     id = this.defineId(existingData[service]);
+                     id = this.defineId(existingData[params.service]);
                 }
                 // création de l'item
                 const album = body;
-                album["id"] = id;
+                album["id"] = parseInt(id);
                 // on l'ajoute à la BDD, dans le tableau attendu
-                existingData[service].push(album);
+                existingData[params.service].push(album);
                 // réécriture des données
                 this.writeFile(document, JSON.stringify(existingData), resp, action)
             }
@@ -185,19 +188,20 @@ exports.addAlbum = (resp, body, service, action, id) => {
     });
 } // FIN ADD ALBUM
 
-exports.updateAlbum = (resp, service, id, body, action) => {
+// fonction permettant de màj un album
+exports.updateAlbum = (resp, params, body, action) => {
     fs.readFile(document, (error, data) => {
         if (this.caseError(error, resp, 'lecture')) {
             return;
         } else {
             const existingData = JSON.parse(data);
             // si le tableau est vide
-            if (!existingData[service].length) {
+            if (!existingData[params.service].length) {
                 resp.status(200).send({message: errors["404_tab"]});
                 return;
             } else {
                 // sélection de l'item
-                let album = existingData[service].find(e => e.id === parseInt(id));
+                let album = existingData[params.service].find(e => e.id === parseInt(params.id));
                 // màj de l'item
                 for (let prop in body){
                     album[prop] = body[prop];
@@ -210,26 +214,26 @@ exports.updateAlbum = (resp, service, id, body, action) => {
     });
 } // FIN UPDATE ALBUM
 
-exports.deleteAlbum = (resp, service, id, action) => {
+// fonction permettant de supprimer un album
+exports.deleteAlbum = (resp, params, action) => {
     fs.readFile(document, (error, data) => {
         if (this.caseError(error, resp, 'lecture')) {
             return;
         } else {
             const existingData = JSON.parse(data);
             // si le tableau est vide
-            if (!existingData[service].length) {
+            if (!existingData[params.service].length) {
                 resp.status(200).send({message: errors["404_tab"]});
                 return;
             } else {
                 // on détermine l'index de l'item dans le tableau
-                const index = existingData[service].findIndex(e => e.id === parseInt(id));
+                const index = existingData[params.service].findIndex(e => e.id === parseInt(params.id));
                 // si l'ID ne correspond à aucun élément
                 if (index === -1) {
                     resp.status(200).send({message: errors["404_id"]});
                     return;
                 }
-                console.log(index)
-                existingData[service].splice(index, 1);
+                existingData[params.service].splice(index, 1);
                 // réécriture des données
                 this.writeFile(document, JSON.stringify(existingData), resp, action);
             }
@@ -278,8 +282,8 @@ exports.searchRegex = (name, regex) => {
     return foundRegex;
 }   // FIN FONCTION SEARCH REGEX
 
-
-exports.searchAlbum = (resp, name, service) => {
+// fonction permettant de chercher un album dans la BDD
+exports.searchAlbum = (resp, params) => {
     // lecture du document
     fs.readFile(document, (error, data) => {
         if (this.caseError(error, resp, 'lecture')) {
@@ -289,14 +293,14 @@ exports.searchAlbum = (resp, name, service) => {
             let filteredData = [];
             // selon qu'on a filtré par service ou non
             if (service) {
-                filteredData = existingData[service].filter( 
-                    album => this.searchRegex(album.name, name)
+                filteredData = existingData[params.service].filter( 
+                    album => this.searchRegex(album.name, params.name)
                 );
             } else {
                 const dataArrays = Object.getOwnPropertyNames(existingData);
                 dataArrays.forEach( 
                     nameTab => existingData[nameTab].forEach( album => {
-                        if (this.searchRegex(album.name, name)){
+                        if (this.searchRegex(album.name, params.name)){
                             filteredData.push(album);
                         }
                     })
