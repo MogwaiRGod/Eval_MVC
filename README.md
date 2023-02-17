@@ -77,7 +77,7 @@ npm start
 
 ```mermaid
 graph TD
-    A --> B[src]
+    AA --> B[src]
     B --> K[controller]
     B --> L[model]
     B --> M[routes]
@@ -86,13 +86,15 @@ graph TD
     L --> P(data.json)
     M --> Q(generic_routes.js)
     N --> R(manipulate_files.js)
-    A --> T(package.json)
-    A --> U(package-lock.json)
-    A --> S(README.md)
-    A --> D(app.js)
-    A --> E(server.js)
+    AA --> T(package.json)
+    AA --> U(package-lock.json)
+    AA --> D(app.js)
+    AA --> E(server.js)
     C[view] --> F[scripts]
-    A[racine] --> C[view]
+    A[racine] -->  AA[back]
+    A --> BB[front]
+        A --> S(README.md)
+    BB --> C[view]
     C[view] --> G[style]
     C[view] --> V[imgs]
     C[view] --> W[html]
