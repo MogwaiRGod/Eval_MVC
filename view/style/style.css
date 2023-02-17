@@ -23,7 +23,7 @@
 
 /* Logo */
 .main-logo {
-    color: var(--couleur1);
+    color: var(--color1);
     font-family: var(--font-display);
     text-transform: uppercase;
     font-size: 30pt;
@@ -40,7 +40,7 @@
 }
 
 #icon-main-logo{
-    fill: var(--couleur1);
+    fill: var(--color1);
     width: 100px;
     height: auto;
 }
@@ -64,22 +64,21 @@
 
 #menu-welcome-page a {
     text-decoration: none;
-    color: var(--blanc);
+    color: var(--white);
     font-size: 16pt;
     line-height: 32pt;
 }
 
 #menu-welcome-page a:hover {
-    color: var(--blanc2);
+    color: var(--white2);
 }
 
 #menu-welcome-page a:active {
-    color: var(--couleur3);
+    color: var(--color3);
 }
 
 /* Image d'illustration */
 
 #img-index {
     width: 60%;
-    /* max-width: 1124px; */
 }

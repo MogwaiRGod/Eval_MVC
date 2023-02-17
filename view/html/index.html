@@ -14,7 +14,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Big+Shoulders+Display:wght@500&display=swap" rel="stylesheet">  
         <!-- Import des feuilles de style -->
         <link rel="stylesheet" href="../style/root.css">
+        <!-- Pour les pages ayant la nav/footer/section d'apps/body normal -->
+        <link rel="stylesheet" href="../style/main.css">
         <link rel="stylesheet" href="../style/style.css">
+        <link rel="stylesheet" href="../style/animations.css">
 
     </head>
 
@@ -23,13 +26,13 @@
         <header>
             <nav>
                 <ul id="ul-nav-container">
-                    <li id="nav-logo"><img class="svg-nav" id="icon-nav-logo" src="../imgs/music.svg" alt="Logo Totify"><a id="nav-link-logo" href="index.html">Totify</a></li>
+                    <li id="nav-logo" ><img class="svg-nav" id="icon-nav-logo" src="../imgs/music.svg" alt="Logo Totify"><a id="nav-link-logo" href="index.html">Totify</a></li>
                     <li id="ul-nav2">
                         <ul id="ul-nav">
-                            <li id="search-bar"><input id="search" type="text" placeholder="Rechercher"><a href="search.html"><img alt="Icône de loupe" class="svg-nav" id="icon-search" src="../imgs/search.svg"></a></li>
+                            <li id="search-bar"><input id="search" type="text" placeholder="Rechercher"><a href="search.html"><img alt="Icône de loupe" class="svg-nav hover-nav" id="icon-search" src="../imgs/search.svg"></a></li>
                             <li id="nav-manage-albums"><a class="link-nav" href="manage_albums.html">Gérer mes albums</a></li>
-                            <li id="nav-library"><a href="library.html"><img alt="Icône de bibliothèque" class="svg-nav" src="../imgs/library.svg"></a></li>
-                            <li id="nav-account"><a href="maintenance.html"><img alt="Icône de rouage" class="svg-nav" src="../imgs/settings.svg"></a></li>
+                            <li id="nav-library"><a href="library.html"><img alt="Icône de bibliothèque" class="hover-nav svg-nav" src="../imgs/library.svg"></a></li>
+                            <li id="nav-account"><a href="maintenance.html"><img alt="Icône de rouage" class="hover-nav svg-nav" src="../imgs/settings.svg"></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -78,19 +81,18 @@
             </div> -->
             
         <div id="container2">
-            <div id="empty-div"></div>
             <div id="main-apps">
                 <div>
-                    <svg id="icon-library" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.3 31.35q2.05 0 3.5-1.425 1.45-1.425 1.45-3.475v-12.6h5.8v-3h-7.8V22.7q-.55-.45-1.325-.7-.775-.25-1.625-.25-1.95 0-3.3 1.375-1.35 1.375-1.35 3.325 0 2 1.35 3.45 1.35 1.45 3.3 1.45ZM13 38q-1.2 0-2.1-.9-.9-.9-.9-2.1V7q0-1.2.9-2.1.9-.9 2.1-.9h28q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h28V7H13v28Zm-6 9q-1.2 0-2.1-.9Q4 42.2 4 41V10h3v31h31v3Zm6-37v28V7Z"/></svg>
-                    <h3><a href="manage_albums.html">Gérer mes albums</a></h3>
+                    <img class="icon-app app lib" alt="Icône de bibliothèque" src="../imgs/library_hover.svg">
+                    <h3><a class="app lib" href="manage_albums.html">Gérer mes albums</a></h3>
                 </div>
                 <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M14.25 36V12h3v24Zm8.25 8V4h3v40ZM6 28v-8h3v8Zm24.75 8V12h3v24ZM39 28v-8h3v8Z"/></svg>
-                    <h3><a href="maintenance.html">Ecouter de la musique</a></h3>
+                    <img class="icon-app app waves" alt="Icône d'ondes de musique" src="../imgs/music_app.svg">
+                    <h3><a class="app waves" href="maintenance.html">Ecouter de la musique</a></h3>
                 </div>
                 <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M11 40q-1.2 0-2.1-.9Q8 38.2 8 37v-7.15h3V37h26v-7.15h3V37q0 1.2-.9 2.1-.9.9-2.1.9Zm13-7.65-9.65-9.65 2.15-2.15 6 6V8h3v18.55l6-6 2.15 2.15Z"/></svg>
-                    <h3><a href="maintenance.html">Télécharger l'application</a></h3>
+                    <img class="icon-app app dl" alt="Icône d'ondes de téléchargement" src="../imgs/download_app.svg">
+                    <h3><a class="app dl" href="maintenance.html">Télécharger l'application</a></h3>
                 </div>
             </div>
         </div>
@@ -116,8 +118,72 @@
         </ul>
     </footer>
 
+        <!-- Script contenant les animations/changements d'état etc. des éléments graphiques du site -->
         <script>
-        </script>
+            /* 
+             * ANIMATIONS DE LA NAV
+             */
 
+            const containerLogo = document.getElementById("nav-logo");
+            const logo = document.getElementById("icon-nav-logo");
+            const textLogo = document.getElementById('nav-link-logo');
+
+            // LOGO
+            // survol du logo
+            containerLogo.addEventListener('mouseover', () => {
+                logo.src = "../imgs/music_hover.svg";
+                setAnim(logo, 'hoverLogo');
+                setAnim(textLogo, 'hoverLogoText');
+                return;
+            });
+
+            // à l'arrêt du survol
+            containerLogo.addEventListener('mouseleave', () => {
+                logo.src = "../imgs/music.svg";
+                setAnim(logo, 'leaveLogo');
+                setAnim(textLogo, 'leaveLogoText');
+                return;
+            });
+
+            // iconS
+            document.querySelectorAll(".hover-nav").forEach(item => {
+                // au survol
+                item.addEventListener('mouseover', () => {
+                    // on change la source de l'image (pour avoir celle dédiée au le survol)
+                    item.setAttribute("src", item.getAttribute("src").substring(0, item.getAttribute("src").length-4) + '_hover.svg');
+                    return;
+                });
+
+                // à l'arrêt du survol
+                item.addEventListener('mouseleave', () => {
+                    // on change la source de l'image (pour avoir celle dédiée au le survol)
+                    item.setAttribute("src",  item.getAttribute("src").substring(0, item.getAttribute("src").length-10) + '.svg');
+                    return;
+                });
+            });
+
+            
+
+            /* 
+             * ANIMATIONS DE LA SECTION D'APPS 
+             */
+
+            document.querySelectorAll(".hover-nav").forEach(item => {
+            
+            }
+
+
+            /*
+             * FONCTIONS
+             */
+
+            // fonction appliquant une animation à un élément HTML
+            function setAnim(item, anim, duration="0.2s", type="forwards") {
+                return item.style.animation = `${anim} ${duration} ${type}`;
+            }
+
+
+
+        </script>
     </body>
 </html>

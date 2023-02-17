@@ -1,0 +1,35 @@
+@keyframes hoverLogo {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.7) rotate(60deg);
+    } 
+}
+
+@keyframes leaveLogo {
+    from {
+        transform: scale(0.7) rotate(60deg);
+    }
+    to {
+        transform: scale(1) rotate(0deg);
+    } 
+}
+
+@keyframes hoverLogoText {
+    from {
+        color: var(--couleur1);
+    }
+    to {
+        color: var(--couleur2);
+    } 
+}
+
+@keyframes leaveLogoText {
+    from {
+        color: var(--couleur2);
+    }
+    to {
+        color: var(--couleur1);
+    } 
+}

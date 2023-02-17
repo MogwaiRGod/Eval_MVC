@@ -4,30 +4,30 @@
  */
 
 :root {
-    /* couleurs */
+    /* culeurs */
 
     /* Background/texte */
     --dark: rgb(17, 16, 16);
     --mid-dark: #1F1F21;
     --dark2: rgb(46, 42, 46);
-    --blanc: rgb(244, 245, 252);
-    --blanc2: rgb(192, 192, 215);
+    --white: rgb(244, 245, 252);
+    --white2: rgb(192, 192, 215);
     /* palette du design */
-    --couleur1: #94c9a8;
-    --couleur2: #4d5834;
-    --couleur3: #330F0A;
-    --couleur4: #CEB3AB;
-    --couleur5: #788AA3;
+    --color1: #94c9a8;
+    --color2: #4d5834;
+    --color3: #330F0A;
+    --color4: #CEB3AB;
+    --color5: #788AA3;
 
 
     /* typos */
 
-    --font-principale: 'Barlow', system-ui, sans-serif;
+    --font-main: 'Barlow', system-ui, sans-serif;
     --font-display: 'Big Shoulders Display', 'Tahoma', 'Trebuchet MS', system-ui, sans-serif;
     /* graisse */
-    --ft-principale-light: 300;
-    --ft-principale-normal: 400;
-    --ft-principale-bold: 600;
+    --ft-main-light: 300;
+    --ft-main-normal: 400;
+    --ft-main-bold: 600;
 
 }
 
@@ -36,166 +36,7 @@
  * PARTIES RECURRENTES
  */
 
-body {
-    margin: 0;
-    background: var(--dark);
-    color: var(--blanc);
-    font-family: var(--font-principale);
-    font-weight: var(--ft-principale-normal);
-    width: 100vw;
-    height: 100vh;
-    text-decoration: none;
-}
 
-
-/* BARRE DE NAV */
-nav {
-    background: var(--dark);
-    height: 30px;
-    color: var(--blanc);
-    display: flex;
-    flex-direction: row;
-    padding-bottom: 20px;
-}
-
-#ul-nav-container {
-    width: 100%;
-    display: inline-block;
-    padding: 0;
-}
-
-nav ul li{
-    display: inline-block;
-}
-
-#ul-nav2 {
-    position: relative;
-    right: 5%;
-    float: right;
-}
-
-
-/* logo */
-#nav-logo {
-    position: relative;
-    left: 5%;
-
-}
-
-#nav-logo:hover{
-    cursor: pointer;
-}
-
-#icon-nav-logo {
-    fill: var(--couleur1);
-}
-
-#nav-link-logo{
-    color: var(--couleur1);
-    text-transform: uppercase;
-    font-family: var(--font-display);
-    font-size: 20pt;
-}
-
-#icon-nav-logo {
-    margin-right: 10px;
-}
-
-/* toutes ls icônes */
-
-.svg-nav {
-    width: 30px;
-}
-
-/* icônes bibliothèque/compte */
-.icon-nav {
-    fill: var(--blanc);
-}
-
-.icon-nav:hover {
-    fill: var(--blanc2);
-}
-
-.icon-nav:active {
-    fill: var(--couleur3);
-}
-
-/* barre de recherche */
-#search {
-    background: var(--dark2);
-    font-weight: var(--ft-principale-light);
-    width: 200px;
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-    color: var(--couleur5);
-}
-
-#icon-search {
-    position: relative;
-    left: -35px;
-    width: 25px;
-    top: 7px;
-}
-
-#icon-search:hover {
-    cursor: pointer;
-}
-
-#icon-search:active {
-    cursor: pointer;
-}
-
-/* liens (gérer mes albums) */
-.link-nav {
-    text-transform: uppercase;
-    color: var(--blanc);
-}
-
-.link-nav:hover {
-    color: var(--blanc2);
-}
-
-.link-nav:active {
-    color: var(--couleur3);
-}
-
-#ul-nav li{
-    margin: 0 5px;
-}
-
-/* Footer */
-
-footer {
-    height: 200px;
-    margin: 0;
-    background: var(--couleur1);
-    display: flex;
-    flex-direction: row;
-    justify-items: center;
-    gap: 5%;
-}
-
-footer ul {
-    top: 20px;
-    position: relative;
-    left: 5%;
-
-}
-
-footer a {
-    color: var(--dark);
-}
-
-footer a:hover {
-    color: var(--dark);
-    font-weight: var(--ft-principale-bold);
-}
-
-footer a:active {
-    color: var(--couleur2);
-    font-weight: var(--ft-principale-bold);
-}
 
 
 /* 
@@ -211,5 +52,10 @@ a {
 }
 
 hr {
+    position: relative;
     margin: 20px 0;
+    color: var(--color5);
+    left: 2%;
+    width: 95%;
+
 }
