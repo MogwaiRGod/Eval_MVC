@@ -8,6 +8,7 @@
 
     /* Background/texte */
     --dark: rgb(17, 16, 16);
+    --mid-dark: #1F1F21;
     --dark2: rgb(46, 42, 46);
     --blanc: rgb(244, 245, 252);
     --blanc2: rgb(192, 192, 215);
@@ -50,8 +51,11 @@ body {
 /* BARRE DE NAV */
 nav {
     background: var(--dark);
-    height: 60px;
+    height: 30px;
     color: var(--blanc);
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 20px;
 }
 
 #ul-nav-container {
@@ -66,34 +70,41 @@ nav ul li{
 
 #ul-nav2 {
     position: relative;
-    right: 8.33vw;
+    right: 5%;
     float: right;
 }
+
 
 /* logo */
 #nav-logo {
     position: relative;
-    left: 8.33vw;
+    left: 5%;
+
+}
+
+#nav-logo:hover{
+    cursor: pointer;
 }
 
 #icon-nav-logo {
     fill: var(--couleur1);
 }
 
-#icon-nav-logo:hover {
-    cursor: pointer;
-    fill: var(--couleur2);
-}
-
-#nav-link-logo {
+#nav-link-logo{
     color: var(--couleur1);
     text-transform: uppercase;
     font-family: var(--font-display);
     font-size: 20pt;
 }
 
-#nav-link-logo:hover {
-    color: var(--couleur2);
+#icon-nav-logo {
+    margin-right: 10px;
+}
+
+/* toutes ls icônes */
+
+.svg-nav {
+    width: 30px;
 }
 
 /* icônes bibliothèque/compte */
@@ -121,17 +132,18 @@ nav ul li{
 }
 
 #icon-search {
-    fill: var(--couleur5);
+    position: relative;
+    left: -35px;
+    width: 25px;
+    top: 7px;
 }
 
 #icon-search:hover {
     cursor: pointer;
-    fill: var(--couleur4);
 }
 
 #icon-search:active {
     cursor: pointer;
-    fill: var(--couleur3);
 }
 
 /* liens (gérer mes albums) */
@@ -148,6 +160,9 @@ nav ul li{
     color: var(--couleur3);
 }
 
+#ul-nav li{
+    margin: 0 5px;
+}
 
 /* Footer */
 
@@ -164,7 +179,8 @@ footer {
 footer ul {
     top: 20px;
     position: relative;
-    left: 8.33%;
+    left: 5%;
+
 }
 
 footer a {
