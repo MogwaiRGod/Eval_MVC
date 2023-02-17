@@ -56,7 +56,7 @@ Diane (Mogw4i)
 * La partie **back** consiste en une API type traitant des requêtes envoyées par la partie client. L'API va traiter les requêtes en appliquant des actions de type CRUD à la base de données.
 
 ### **Installation**
-1. Ouvrir un terminal et se positionner dans le dossier ``back`` 
+1. Ouvrir un terminal et se positionner dans le dossier ``/back`` 
 2. Vérifier que **Node.js** est installé en entrant la commande suivante dans un terminal (situé dans le dossier) <br>
 ```
 node -v
@@ -94,9 +94,8 @@ graph TD
     AA --> E(server.js)
     C[view] --> F[scripts]
     A[racine] -->  AA[back]
-    A --> BB[front]
         A --> S(README.md)
-    BB --> C[view]
+    A --> C[view]
     C[view] --> G[style]
     C[view] --> V[imgs]
     C[view] --> W[html]
