@@ -21,6 +21,8 @@ Diane (MogwaiRGod)
 2. [Contenu](#contenu)
     1. [Organigramme](#organigramme-du-projet)
     1. [Contenu détaillé](#contenu-détaillé)
+3. [Utilisation](#utilisation)
+{à rédiger}
 
 <br>
 <hr>
@@ -115,26 +117,36 @@ graph TD
 
 ## Contenu détaillé
 
-### /
+## **Back**
+
+#### /
 | Fichier | Description |
-|---|---|
+|:---:|:---|
 |**app.js**|Point d'entrée de l'application|
 |**server.js**|Support de lancement de l'application|
 |package.json|Description technique de l'application
 
-### /src
+#### /src
 | Dossier | Fichier | Description |
-|---|---------|---|
+|:---:|:---------:|:---|
 | /controller | **generic_controller.js** | Fonctions du **CRUD** (Create, Read, Update) pour les requêtes |
 | /model | **data.json** | Jeu de données de l'application : le JSON contient 3 tableaux : un pour les albums accessibles via des plateformes nécessitant un abonnement (**membership**), un pour la musique importée par l'utilisateur (**local**), un pour les albums achetés sur des plateformes spécifies. |
 | /routes | **generic_routes** | Routes **dynamiques** pour les requêtes. Verbes utilisés : **Post**, **Get**, **Put** et **Delete**
 | /utils | **manipulate_files.js** | Fichier contenant toutes les **fonctions** réutilisables du controller
 
-### /view
+### **Front**
+
+#### /view
 | Dossier | Fichier | Description |
-|---|--------------|---|
+|:---:|:------------:|:---|
 | /html | - **index.html** <br> - **maintenance.html** <br> - **search.html** <br> - **library.html** <br> - **manage_albums.html** | __index.html__ : accueil de l'**interface** client <br> __maintenance.html__ : page par défaut quand **404 not found** <br> __search.html__ : page de **résultats de la recherche** dans la barre de recherche <br> __library.html__ : page qui affiche toute la bibliothèque de l'utilisateur <br> __manage_albums.html__ : page de gestion des albums |
 | /scripts |**main.js**| Fichier contenant toutes les **fonctions** de traitement des requêtes côté client <=> lien avec l'API back-end |
 | /style | - **root.css** <br> - **style.css** | **Feuilles de style** de l'interface client <br> __root.css__ contient toute la base du design (couleurs...) et le design des objets réutilisables (boutons, menus...) ainsi que des parties du site récurrentes (footer, nav...) <br> __style.css__ contient la mise en page globale |
 
 Le dossier **/imgs** contient les images affichées sur le site.
+
+<br>
+<hr>
+<br>
+
+# Utilisation
