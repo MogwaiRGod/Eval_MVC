@@ -35,15 +35,17 @@ Diane (Mogw4i)
 | JavaScript | jQuery | Node.js |
 | HTML |
 | CSS |
-### **Modules**
-|Module|Version|Utilisation|
-|----|----|----|
-| express | 4.18.2 | |
-| fs | 0.0.1-security | |
-| body-parser | 1.20.1 | |
-| cors | 2.8.5 | |
 
-// à remplir
+### **Modules**
+
+| Module | Version | Utilisation |
+|----|----|----|
+| express | 4.18.2 | Module contenant des fonctionnalités pour les reqûetes HTTP => contient des fonctions telles que get(), use()... |
+| fs | 0.0.1-security | Module permettant de manipuler des fichiers |
+| body-parser | 1.20.1 | Middleware utile à express ; il lui permet de créer/lire/manipuler des données HTTP POST |
+| cors | 2.8.5 | Module permettant d'autoriser une API REST de récupérer les requêtes d'une page web |
+| nodemon | 2.0.20 | Module rechargeant automatiquement l'application à chaque changement (sauvegarde) d'un des fichiers qui la composent |
+
 
 ## Fonctionnement
 
@@ -64,7 +66,7 @@ node -v
 npm start
 ```
 - ``rs`` pour redémarrer
-- ``rs`` pour quitter
+- ``CTRL+C`` pour quitter
 3. Aller dans le dossier view et ouvrir le dashboard : **index.html**
 
 <br>
