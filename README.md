@@ -6,7 +6,7 @@ Plateforme centrale de gestion et d'écoute de musique
 > Application centralisant toute la musique de l'utilisateur en provenance d'autres plateformes, ainsi que la musique importée localement.
 
 ### Auteur
-Diane (Mogw4i)
+Diane (MogwaiRGod)
 
 <br>
 
