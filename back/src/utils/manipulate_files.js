@@ -48,7 +48,7 @@ const errors =
 // sinon ne fait rien et retourne FAUX
 exports.caseError = (error_sys, resp, type) => {
     // le type d'erreur est soit une erreur d'écriture, soit de lecture ; si à l'avenir,
-    // d'autres error sont possibles, ça retournera par défaut 'erreur interne' = erreur 500
+    // d'autres erreurs sont possibles, ça retournera par défaut 'erreur interne' = erreur 500
     const error_msg = errors[`500_${type}`];
     if (error_sys) {
         resp.status(parseInt(500)).send({
@@ -63,8 +63,7 @@ exports.caseError = (error_sys, resp, type) => {
 
 
 /*
- * DOCUMENT
- * fonctions relative au fichier de donnée (lecture/écriture)
+ * FONCTIONS DU CRUD
  */
 
 /* fonction qui lit un document entré en argument (doc),
@@ -106,6 +105,7 @@ exports.readFile = (resp, service, platform, id) => {
                 } else {
                     // on sélectionne tous les albums étant sur la plateforme demandée
                     const albums = existingData[service].filter(album => album[platform].toLowerCase() === platform.toLowerCase());
+                    // si le filtre n'a retourné aucun album
                     if (albums === undefined) {
                         resp.status(404).send({message: errors["404_vide"]});
                     } else {
@@ -153,6 +153,97 @@ exports.writeFile = (doc, data, resp, action) => {
     return;
 } // FIN WRITE FILE
 
+exports.addAlbum = (resp, body, service, action, id) => {
+    fs.readFile(document, (error, data) => {
+        if (this.caseError(error, resp, 'lecture')) {
+            return;
+        } else {
+            let existingData = JSON.parse(data);
+            // si le tableau est vide
+            if (!existingData[service]) {
+                id = 0;
+            } else {
+                // si un id est spécifié
+                if (id) {
+                    // on vérifie qu'il n'est pas déjà attribué
+                    if(this.checkId(id, existingData[service], resp)) {
+                        return;
+                    }
+                } else {
+                     // sinon, on calcule un nouvel ID
+                     id = this.defineId(existingData[service]);
+                }
+                // création de l'item
+                const album = body;
+                album["id"] = id;
+                // on l'ajoute à la BDD, dans le tableau attendu
+                existingData[service].push(album);
+                // réécriture des données
+                this.writeFile(document, JSON.stringify(existingData), resp, action)
+            }
+        }
+    });
+} // FIN ADD ALBUM
+
+exports.updateAlbum = (resp, service, id, body, action) => {
+    fs.readFile(document, (error, data) => {
+        if (this.caseError(error, resp, 'lecture')) {
+            return;
+        } else {
+            const existingData = JSON.parse(data);
+            // si le tableau est vide
+            if (!existingData[service].length) {
+                resp.status(200).send({message: errors["404_tab"]});
+                return;
+            } else {
+                // sélection de l'item
+                let album = existingData[service].find(e => e.id === parseInt(id));
+                // màj de l'item
+                for (let prop in body){
+                    album[prop] = body[prop];
+                }
+            }
+            // réécriture des données
+            this.writeFile(document,JSON.stringify(existingData), resp, action);
+        }
+    return;
+    });
+} // FIN UPDATE ALBUM
+
+exports.deleteAlbum = (resp, service, id, action) => {
+    fs.readFile(document, (error, data) => {
+        if (this.caseError(error, resp, 'lecture')) {
+            return;
+        } else {
+            const existingData = JSON.parse(data);
+            // si le tableau est vide
+            if (!existingData[service].length) {
+                resp.status(200).send({message: errors["404_tab"]});
+                return;
+            } else {
+                // on détermine l'index de l'item dans le tableau
+                const index = existingData[service].findIndex(e => e.id === parseInt(id));
+                // si l'ID ne correspond à aucun élément
+                if (index === -1) {
+                    resp.status(200).send({message: errors["404_id"]});
+                    return;
+                }
+                console.log(index)
+                existingData[service].splice(index, 1);
+                // réécriture des données
+                this.writeFile(document, JSON.stringify(existingData), resp, action);
+            }
+        }
+    });
+    return;
+}
+
+
+
+/*
+ * FONCTIONS RELATIVES A LA LOGIQUE METIER
+ * fonctions de recherche et de traitement des IDs
+ */
 
 // fonction qui cherche une expression (regex) dans une str de caractères (str)
 // retourne un booléen selon si la regex a été trouvé à l'intérieur ou non
@@ -216,41 +307,6 @@ exports.searchAlbum = (resp, name, service) => {
     });
 } // FIN SEARCH ALBUM
 
-exports.addAlbum = (resp, body, service, action, id) => {
-    fs.readFile(document, (error, data) => {
-        if (this.caseError(error, resp, 'lecture')) {
-            return;
-        } else {
-            let existingData = JSON.parse(data);
-            // si le tableau est vide
-
-            if (!existingData[service]) {
-                id = 0;
-            } else {
-                // si un id est spécifié
-                if (id) {
-                    // on vérifie qu'il n'est pas déjà attribué
-                    if(this.checkId(id, existingData[service], resp)) {
-                        return;
-                    }
-                } else {
-                     // sinon, on calcule un nouvel ID
-                     id = this.defineId(existingData[service]);
-                }
-                
-                // création de l'item
-                const album = body;
-                album["id"] = id;
-                
-                // on l'ajoute à la BDD, dans le tableau attendu
-                existingData[service].push(album);
-                // réécriture des données
-                this.writeFile(document, JSON.stringify(existingData), resp, action)
-            }
-        }
-    });
-} // FIN ADD ALBUM
-
 
 // fonction qui vérifie que l'id entré en argument n'est pas déjà pris par un objet du tableau passé en argument
 // si c'est le cas : message d'erreur + retourne vrai ; sinon ne ne fait rien et retourne faux
@@ -270,57 +326,4 @@ exports.defineId = (objs) => {
     objs.forEach( e => ids.push(parseInt(e.id)));
     // on retourne l'ID obtenu à partir de l'ID le plus grand déjà attribué +1
     return Math.max(...ids) + 1;
-}
-
-exports.updateAlbum = (resp, service, id, body, action) => {
-    fs.readFile(document, (error, data) => {
-        if (this.caseError(error, resp, 'lecture')) {
-            return;
-        } else {
-            const existingData = JSON.parse(data);
-            // si le tableau est vide
-            if (!existingData[service].length) {
-                resp.status(200).send({message: errors["404_tab"]});
-                return;
-            } else {
-                // sélection de l'item
-                let album = existingData[service].find(e => e.id === parseInt(id));
-                // màj de l'item
-                for (let prop in body){
-                    album[prop] = body[prop];
-                }
-            }
-            // réécriture des données
-            this.writeFile(document,JSON.stringify(existingData), resp, action);
-        }
-    return;
-    });
-} // FIN UPDATE ALBUM
-
-exports.deleteAlbum = (resp, service, id, action) => {
-    fs.readFile(document, (error, data) => {
-        if (this.caseError(error, resp, 'lecture')) {
-            return;
-        } else {
-            const existingData = JSON.parse(data);
-            // si le tableau est vide
-            if (!existingData[service].length) {
-                resp.status(200).send({message: errors["404_tab"]});
-                return;
-            } else {
-                // on détermine l'index de l'item dans le tableau
-                const index = existingData[service].findIndex(e => e.id === parseInt(id));
-                // si l'ID ne correspond à aucun élément
-                if (index === -1) {
-                    resp.status(200).send({message: errors["404_id"]});
-                    return;
-                }
-                console.log(index)
-                existingData[service].splice(index, 1);
-                // réécriture des données
-                this.writeFile(document, JSON.stringify(existingData), resp, action);
-            }
-        }
-    });
-    return;
 }
