@@ -61,6 +61,7 @@
     width: 70%;
     height: fit-content;
     font-size: 16pt;
+    padding: 2% 0 2% 5%;
 }
 
 #menu-welcome-page a {
@@ -134,3 +135,14 @@
     font-weight: var(--ft-main-bold);
     color: var(--white);
 }
+
+
+/* SEARCH.HTML */
+
+#container-search-ul,
+#container-search-div {
+    display: none;
+}
+
+
+/* MANAGE_ALBUMS.HTML */
