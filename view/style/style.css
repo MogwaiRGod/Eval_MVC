@@ -146,3 +146,92 @@
 
 
 /* MANAGE_ALBUMS.HTML */
+
+#container-manage-albums {
+    position: relative;
+    display: flex;
+    width: 90vw;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: fit-content;
+    margin-bottom: 10%;
+}
+
+#container-form {
+    left: 0;
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    height: min-content;
+    min-height: unset;
+}
+
+#col1 {
+    margin-right: 40px;
+    padding-bottom: 40px;
+}
+
+#col1,
+#last-form-albums {
+    display: flex;
+    flex-direction: column;
+}
+
+#h3-action {
+    margin-top: 10%;
+}
+
+#last-form-albums {
+    display: none;
+}
+
+#sub-container-albums {
+    padding-right: 5%;
+}
+
+#btn-form {
+    display: none;
+    position: relative;
+    height: fit-content;
+    align-self: flex-end;
+    margin-bottom: 68px;
+}
+
+#albums-filter,
+#lib-albums {
+    display: none;
+}
+
+#default-aside {
+    color: var(--white2);
+    font-size: 12pt;
+    margin-top: 10px;
+}
+
+#tmp-aside {
+    background: var(--mid-color1);
+    color: var(--dark);
+    padding: 2%;
+    margin-top: 10px;
+    font-weight: var(--ft-main-bold);
+    border-radius: 5px;
+}
+
+#menu-membership,
+#label-menu-membership,
+#menu-purchase,
+#label-menu-purchase,
+#label-menu-action,
+#menu-action {
+    display: none;
+}
+
+#skip-next {
+    transform: rotate(180deg);
+}
+
+.icon-bar {
+    width: 20px;
+    height: auto;
+}

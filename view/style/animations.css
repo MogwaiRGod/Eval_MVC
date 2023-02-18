@@ -37,3 +37,17 @@
         color: var(--color1);
     } 
 }
+
+
+/* 
+ * Animation de la barre de progression de musique 
+ */
+
+@keyframes progressMusic {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    } 
+}

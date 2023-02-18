@@ -7,18 +7,21 @@
  * OBJETS RECURRENTS
  */
 
- ul {
+/* Listes à points */
+ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
+/* Liens */
 a:link,
 a:visited {
     text-decoration: none;
     cursor: pointer;
 }
 
+/* Séparations */
 hr {
     position: relative;
     margin: 20px 0;
@@ -28,14 +31,68 @@ hr {
 
 }
 
+/* Labels */
 label {
-    color: var(--white2);
-    font-size: 14pt;
+    color: var(--white);
+    font-size: 16pt;
+    margin: 20px 0 10px;
 }
 
- /*
-  * PARTIES PRINCIPALES
-  */
+/* Menus dropdown */
+select {
+    background: var(--dark2);
+    color: var(--white2);
+    font-weight: var(--ft-main-light);
+    padding: 10px 0 10px 20px;
+    font-size: 12pt;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Champs d'input */
+input {
+    background: var(--dark2);
+    font-weight: var(--ft-main-light);
+    font-size: 12pt;
+    padding: 5px 5px 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: var(--color5);
+    outline: none;
+}
+
+input:focus {
+    color: var(--white);
+}
+
+/* Boutons */
+button {
+    border: none;
+    background: var(--white2);
+    color: var(--dark);
+    font-weight: var(--ft-main-normal);
+    font-size: 14pt;
+    font-family: var(--font-main);
+    padding: 1% 2% 1%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--white);
+    color: var(--dark2);
+}
+
+button:active {
+    background: var(--color2);
+    color: var(--mid-dark);
+}
+
+
+
+/*
+ * PARTIES PRINCIPALES
+ */
 
 /* BODY */
 body {
@@ -224,6 +281,11 @@ h3 a {
     font-weight: var(--ft-main-normal);
 }
 
+h3 a:hover {
+    color: var(--color1);
+    font-weight: var(--ft-main-bold);
+}
+
 
 .icon-app {
     width: 100%;
@@ -315,4 +377,68 @@ h3 a {
     font-size: 12pt;
     line-height: 36pt;
 }
+
+
+/* BARRE D'ECOUTE DE MUSIQUE */
+
+#bar {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+#music-bar {
+    color: var(--color4);
+    background: var(--color3);
+    font-size: 12pt;
+    font-weight: var(--ft-main-light);
+    gap: 10%;
+}
+
+
+#progress-bar {
+    background: var(--dark2);
+    height: 5px;
+    width: 100%;
+}
+
+#progressed {
+    background: var(--color4);
+    height: 5px;
+    animation: progressMusic 180s infinite;
+}
+
+#music-bar,
+#music-bar-icons,
+#track {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#track {
+    width: 100%;
+    gap: 1%;
+}
+
+#music-bar-icons {
+    position: relative;
+    left: 5%;
+    gap: 1%;
+}
+
+#song-playing-name {
+    font-weight: var(--ft-main-bold);
+}
+
+#skip-next {
+    transform: rotate(180deg);
+}
+
+.icon-bar {
+    width: 20px;
+    height: auto;
+}
+
+
 

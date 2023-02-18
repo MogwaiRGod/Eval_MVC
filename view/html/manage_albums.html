@@ -43,33 +43,65 @@
     <main>
         <!-- Div du formulaire -->
         <div id="container-manage-albums">
-            <div class="containers">
-                <h3>Gérer mes albums</h3>
-                <label>Quel service ?</label>
-                <label>Quelle plateforme ?</label>
-                <label>Que veux-tu faire ?</label>
-                <div id="sub-container-albums">
-                    <form>
-                        <h3>Gérer mes albums</h3>
+            <div class="containers" id="container-form">
+                <div id="col1">
+                    <h3>Gérer mes albums</h3>
+                    <label for="menu-service" id="label-menu-service">Quel service ?</label>
+                    <select id="menu-service">
+                        <option selected disabled>Service</option>
+                        <option value="membership">Abonnement</option>
+                        <option value="purchase">Achat</option>
+                        <option value="local">Import local</option>
+                    </select>
+                    <label for="menu-membership" id="label-menu-membership">Quelle plateforme ?</label>
+                    <select id="menu-membership">
+                        <option selected disabled>Plateforme</option>
+                        <option value="Deezer">Deezer</option>
+                        <option value="Spotify">Spotify</option>
+                        <option value="Tidal">Tidal</option>
+                        <option value="iHeartRadio">iHeartRadio</option>
+                        <option value="YouTube Music">YouTube Music</option>
+                        <option value="SoundCloud">SoundCloud</option>
+                    </select for="menu-purchase">
+                    <select id="menu-purchase">
+                        <option selected disabled>Plateforme</option>
+                        <option value="Bandcamp">Bandcamp</option>
+                        <option value="Amazon Music">Amazon Music</option>
+                        <option value="iTunes">iTunes</option>
+                        <option value="7Digital">7Digital</option>
+                        <option value="Bleep">Bleep</option>
+                    </select>
+                    <label for="menu-action" id="label-menu-action">Que veux-tu faire ?</label>
+                    <select id="menu-action">
+                        <option selected disabled>Action</option>
+                        <option value="add">Ajouter un album</option>
+                        <option value="delete">Supprimer un album</option>
+                        <option value="update">Modifier un album</option>
+                    </select>
+                    <form id="last-form-albums">
+                        <h3 id="h3-action"><span id="action">{Action}</span> un album</h3>
                         <label>ID</label>
+                        <input type="text" id="ipt-id" placeholder="ID d'enregistrement (optionnel)">
                         <label>Nom*</label>
+                        <input type="text" id="ipt-name" placeholder="Nom">
                         <label>Artiste*</label>
-                        <aside>*Champs obligatoires</aside>
+                        <input type="text" id="ipt-artist" placeholder="Artiste">
+                        <aside id="default-aside">*Champs obligatoires</aside>
                     </form>
-                    <button>Valider</button>
                 </div>
+                <button id="btn-form">Valider</button>
             </div>
             <!-- Affichage de la bibliothèque sélectionnée -->
-            <div class="containers">
+            <div class="containers"  id="sub-container-albums">
                 <h3>Bibliothèque</h3>
-                <ul class="ul-filter">
+                <ul id="albums-filter" class="ul-filter">
                     <li>Filtrer par</li>
-                    <li>Afficher tout</li>
-                    <li>Fichiers importés</li>
-                    <li>Abonnements</li>
-                    <li>Achats</li>
+                    <li value="all">Afficher tout</li>
+                    <li value="local">Fichiers importés</li>
+                    <li value="membership">Abonnements</li>
+                    <li value="purchase">Achats</li>
                 </ul>
-                <div class="container-body">
+                <div class="container-body" id="lib-albums">
                     <h4>{Service}</h4>
                     <table>
                         <thead>
@@ -83,6 +115,46 @@
                         <tbody>
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="bar">
+            <div id="progress-bar">
+                <div id="progressed"></div>
+            </div>
+            <div id="music-bar">
+                <ul id="music-bar-icons">
+                    <li><img class="icon-bar" id="skip-previous"  src="../imgs/skip_previous.svg" alt="Morceau précédent"></li>
+                    <li><img class="icon-bar" id="play" src="../imgs/play.svg" alt="Play"></li>
+                    <li><img class="icon-bar" id="skip-next" src="../imgs/skip_previous.svg" alt="Morceau suivant"></li>
+                    <li><img class="icon-bar" id="stop" src="../imgs/stop.svg" alt="Arrêter"></li>
+                    <li><img class="icon-bar" id="shuffle" src="../imgs/shuffle.svg" alt="Shuffle"></li>
+                    <li><img class="icon-bar" id="repeat" src="../imgs/repeat.svg" alt="Ecoute dans l'ordre"></li>
+                    <li><img class="icon-bar" id="offline" src="../imgs/download_for_offline.svg" alt="Télécharger localement"></li>
+                </ul>
+
+                <div id="track">
+                    <img class="icon-bar" src="../imgs/music_bar.svg" alt="Icône de musique">
+                    <p id="song-playing"><span id="song-playing-name">Ultraviolence</span> — <span id="song-playing-artist">You Me At Six</span></p>
+                    <img class="icon-bar" id="favourite" src="../imgs/favourite.svg" alt="Ajouter aux favoris">
+                </div>
+            </div>
+        </div>
+
+        <div id="container2">
+            <div id="main-apps">
+                <div>
+                    <img class="icon-app app lib" alt="Icône de bibliothèque" src="../imgs/library_hover.svg">
+                    <h3><a class="app lib" href="manage_albums.html">Gérer mes albums</a></h3>
+                </div>
+                <div>
+                    <img class="icon-app app waves" alt="Icône d'ondes de musique" src="../imgs/music_app.svg">
+                    <h3><a class="app waves" href="maintenance.html">Ecouter de la musique</a></h3>
+                </div>
+                <div>
+                    <img class="icon-app app dl" alt="Icône d'ondes de téléchargement" src="../imgs/download_app.svg">
+                    <h3><a class="app dl" href="maintenance.html">Télécharger l'application</a></h3>
                 </div>
             </div>
         </div>

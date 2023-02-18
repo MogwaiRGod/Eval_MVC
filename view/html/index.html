@@ -63,25 +63,31 @@
             <img src="../imgs/person_music-04.png" alt="Personne écoutant de la musique sur son téléphone" id="img-index">
         </div>
 
-            <!-- Div contenant la barre d'écoute de musique en cours / je la ferai uniquement si j'ai le temps -->
-            <!-- <div id="music-bar">
-                <div id="progress-bar"></div>
-                <ul id="music-bar-icons">
-                    <li><svg id="skip-previous" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M11 36V12h3v24Zm26 0L19.7 24 37 12Zm-3-12Zm0 6.25v-12.5L24.95 24Z"/></svg></li>
-                    <li><svg id="icon-play" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M16 37.85v-28l22 14Zm3-14Zm0 8.55 13.45-8.55L19 15.3Z"/></svg></li>
-                    <li><svg id="icon-pause" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M28.25 38V10H36v28ZM12 38V10h7.75v28Z"/></svg></li>
-                    <li><svg id="icon-stop" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M16.5 31.5h15v-15h-15ZM24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 23.95q0-4.1 1.575-7.75 1.575-3.65 4.3-6.35 2.725-2.7 6.375-4.275Q19.9 4 24.05 4q4.1 0 7.75 1.575 3.65 1.575 6.35 4.275 2.7 2.7 4.275 6.35Q44 19.85 44 24q0 4.1-1.575 7.75-1.575 3.65-4.275 6.375t-6.35 4.3Q28.15 44 24 44Zm.05-3q7.05 0 12-4.975T41 23.95q0-7.05-4.95-12T24 7q-7.05 0-12.025 4.95Q7 16.9 7 24q0 7.05 4.975 12.025Q16.95 41 24.05 41ZM24 24Z"/></svg></li>
-                    <li><svg id="icon-shuffle" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M29.05 40.5v-3h6.25l-9.2-9.15 2.1-2.15 9.3 9.2v-6.35h3V40.5Zm-19.45 0-2.1-2.15 27.9-27.9h-6.35v-3H40.5V18.9h-3v-6.3Zm10.15-18.7L7.5 9.6l2.15-2.15 12.25 12.2Z"/></svg></li>
-                    <li><svg id="icon-repeat" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="m14 44-8-8 8-8 2.1 2.2-4.3 4.3H35v-8h3v11H11.8l4.3 4.3Zm-4-22.5v-11h26.2l-4.3-4.3L34 4l8 8-8 8-2.1-2.2 4.3-4.3H13v8Z"/></svg></li>
-                    <li><svg id="to-download" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M14 34h20v-3H14Zm9.85-6.3 7.9-7.85-2.1-2.1-4.25 4.2V12h-3v9.95l-4.25-4.2-2.1 2.1ZM24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 24q0-4.15 1.575-7.8 1.575-3.65 4.3-6.35 2.725-2.7 6.375-4.275Q19.9 4 24 4q4.15 0 7.8 1.575 3.65 1.575 6.35 4.275 2.7 2.7 4.275 6.35Q44 19.85 44 24q0 4.1-1.575 7.75-1.575 3.65-4.275 6.375t-6.35 4.3Q28.15 44 24 44Zm0-3q7.1 0 12.05-4.975Q41 31.05 41 24q0-7.1-4.95-12.05Q31.1 7 24 7q-7.05 0-12.025 4.95Q7 16.9 7 24q0 7.05 4.975 12.025Q16.95 41 24 41Zm0-17Z"/></svg></li>
-                </ul>
+            <!-- Div contenant la barre d'écoute de musique en cours / 
+            je terminerai les animations/fonctionnalités si j'ai le temps ^^ -->
+            <div id="bar">
+                <div id="progress-bar">
+                    <div id="progressed"></div>
+                </div>
+                <div id="music-bar">
+                    <ul id="music-bar-icons">
+                        <li><img class="icon-bar" id="skip-previous"  src="../imgs/skip_previous.svg" alt="Morceau précédent"></li>
+                        <li><img class="icon-bar" id="play" src="../imgs/play.svg" alt="Play"></li>
+                        <li><img class="icon-bar" id="skip-next" src="../imgs/skip_previous.svg" alt="Morceau suivant"></li>
+                        <li><img class="icon-bar" id="stop" src="../imgs/stop.svg" alt="Arrêter"></li>
+                        <li><img class="icon-bar" id="shuffle" src="../imgs/shuffle.svg" alt="Shuffle"></li>
+                        <li><img class="icon-bar" id="repeat" src="../imgs/repeat.svg" alt="Ecoute dans l'ordre"></li>
+                        <li><img class="icon-bar" id="offline" src="../imgs/download_for_offline.svg" alt="Télécharger localement"></li>
+                    </ul>
 
-                <svg id="icon-music-playing" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M14.25 36V12h3v24Zm8.25 8V4h3v40ZM6 28v-8h3v8Zm24.75 8V12h3v24ZM39 28v-8h3v8Z"/></svg>
-                <p id="song-playing"><span id="song-playing-name">Ultraviolence</span> — <span id="song-playing-artist">You Me At Six</span></p>
-                <svg id="favorite" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="m24 41.95-2.05-1.85q-5.3-4.85-8.75-8.375-3.45-3.525-5.5-6.3T4.825 20.4Q4 18.15 4 15.85q0-4.5 3.025-7.525Q10.05 5.3 14.5 5.3q2.85 0 5.275 1.35Q22.2 8 24 10.55q2.1-2.7 4.45-3.975T33.5 5.3q4.45 0 7.475 3.025Q44 11.35 44 15.85q0 2.3-.825 4.55T40.3 25.425q-2.05 2.775-5.5 6.3T26.05 40.1ZM24 38q5.05-4.65 8.325-7.975 3.275-3.325 5.2-5.825 1.925-2.5 2.7-4.45.775-1.95.775-3.9 0-3.3-2.1-5.425T33.5 8.3q-2.55 0-4.75 1.575T25.2 14.3h-2.45q-1.3-2.8-3.5-4.4-2.2-1.6-4.75-1.6-3.3 0-5.4 2.125Q7 12.55 7 15.85q0 1.95.775 3.925.775 1.975 2.7 4.5Q12.4 26.8 15.7 30.1 19 33.4 24 38Zm0-14.85Z"/></svg>
+                    <div id="track">
+                        <img class="icon-bar" src="../imgs/music_bar.svg" alt="Icône de musique">
+                        <p id="song-playing"><span id="song-playing-name">Ultraviolence</span> — <span id="song-playing-artist">You Me At Six</span></p>
+                        <img class="icon-bar" id="favourite" src="../imgs/favourite.svg" alt="Ajouter aux favoris">
+                    </div>
+                </div>
+            </div>
 
-            </div> -->
-            
         <div id="container2">
             <div id="main-apps">
                 <div>
