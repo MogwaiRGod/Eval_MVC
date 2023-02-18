@@ -1,11 +1,14 @@
 /*
- * INDEX
+ * INDEX.HTML
  */
 
 #container1 {
+    position: relative;
     display: flex;
     flex-direction: row;
     padding-top: 20px;
+    left: 5%;
+    width: 95%;
 }
 
 /* Partie logo */
@@ -18,7 +21,6 @@
 
 #section-logo {
     position: relative;
-    left: 5%;
 }
 
 /* Logo */
@@ -58,7 +60,6 @@
     background: var(--mid-dark);
     width: 70%;
     height: fit-content;
-    left: 5%;
     font-size: 16pt;
 }
 
@@ -81,4 +82,55 @@
 
 #img-index {
     width: 60%;
+}
+
+
+
+/* MAINTENANCE.HTML */
+
+#container-maintenance {
+    margin: 50px 0;
+    position: relative;
+    background: var(--mid-dark);
+    color: var(--white2);
+    width: 80%;
+    left: 5%;
+    padding: 2% 5% 4%;
+    height: fit-content;
+}
+
+#flex-container {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+#flex-container h4 {
+    position: relative;
+    font-weight: var(--ft-main-bold);
+    font-size: 36pt;
+    width: fit-content;
+    margin: 0 0 30px;
+}
+
+#rocket-container {
+    width: 70%;
+    align-self: center;
+    margin-bottom: 20px;
+}
+
+#rocket-container img {
+    width: 100%;
+}
+
+#flex-container a {
+    font-weight: var(--ft-main-light);
+    color: var(--white2);
+    width: fit-content;
+    align-self: center;
+}
+
+#flex-container a:hover {
+    font-weight: var(--ft-main-bold);
+    color: var(--white);
 }

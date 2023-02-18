@@ -1,6 +1,5 @@
 /*
- * Déclaration et définition de toutes les variables/valeurs du design +
- * design des objets récurrents (e.g menus dropdown) et des parties réutilisables (e.g footer)
+ * Déclaration et définition de toutes les variables/valeurs du design
  */
 
 :root {
@@ -28,34 +27,5 @@
     --ft-main-light: 300;
     --ft-main-normal: 400;
     --ft-main-bold: 600;
-
-}
-
-
-/*
- * PARTIES RECURRENTES
- */
-
-
-
-
-/* 
- * OBJETS RECURRENTS
- */
-
- ul {
-    list-style-type: none;
-}
-
-a {
-    text-decoration: none;
-}
-
-hr {
-    position: relative;
-    margin: 20px 0;
-    color: var(--color5);
-    left: 2%;
-    width: 95%;
 
 }

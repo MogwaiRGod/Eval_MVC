@@ -14,6 +14,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Big+Shoulders+Display:wght@500&display=swap" rel="stylesheet">  
         <!-- Import des feuilles de style -->
         <link rel="stylesheet" href="../style/root.css">
+        <!-- Pour les pages ayant la nav/footer/section d'apps/body normal -->
+        <link rel="stylesheet" href="../style/main.css">
+        <link rel="stylesheet" href="../style/animations.css">
         <link rel="stylesheet" href="../style/style.css">
     </head>
 
@@ -36,8 +39,18 @@
     </header>
 
     <main>
-        <div>
-
+        <div id="container-maintenance">
+            <div id="flex-container">
+                <h4>Site en maintenance</h4>
+                <div id="rocket-container">
+                    <img src="../imgs/rocket.svg" alt="Icône de fusée">
+                    <!-- Les divs suivantes doivent être animées , je le ferai si j'ai le temps -->
+                    <!-- <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div> -->
+                </div>
+                <a href="index.html">Revenir à l'accueil</a>
+            </div>
         </div>
     </main>
 
@@ -57,4 +70,6 @@
             <li><a href="maintenance.html">Termes et conditions</a></li>
         </ul>
     </footer>
+
+    <script src="../scripts/anims.js"></script>
 </body>

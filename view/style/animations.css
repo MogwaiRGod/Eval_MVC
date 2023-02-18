@@ -1,3 +1,6 @@
+/* Survol/arrêt du survol du logo de la nav */
+
+/* Logo */
 @keyframes hoverLogo {
     from {
         transform: scale(1);
@@ -16,20 +19,21 @@
     } 
 }
 
+/* Texte du logo */
 @keyframes hoverLogoText {
     from {
-        color: var(--couleur1);
+        color: var(--color1);
     }
     to {
-        color: var(--couleur2);
+        color: var(--color2);
     } 
 }
 
 @keyframes leaveLogoText {
     from {
-        color: var(--couleur2);
+        color: var(--color2);
     }
     to {
-        color: var(--couleur1);
+        color: var(--color1);
     } 
 }

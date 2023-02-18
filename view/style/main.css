@@ -1,7 +1,35 @@
 /* 
- *Parties du site réutilisables
+ * Style des parties réutilisables du site et des objets récurrents
  */
 
+
+/* 
+ * OBJETS RECURRENTS
+ */
+
+ ul {
+    list-style-type: none;
+}
+
+a:link,
+a:visited {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+hr {
+    position: relative;
+    margin: 20px 0;
+    color: var(--color5);
+    left: 2%;
+    width: 95%;
+
+}
+
+
+ /*
+  * PARTIES PRINCIPALES
+  */
 
 /* BODY */
 body {
@@ -12,7 +40,6 @@ body {
     font-weight: var(--ft-main-normal);
     width: 100vw;
     height: 100vh;
-    text-decoration: none;
 }
 
 
@@ -129,8 +156,7 @@ nav ul li{
 
 footer {
     height: 200px;
-    margin: 0;
-    background: var(--color1);
+    margin: 30px 0;
     display: flex;
     flex-direction: row;
     justify-items: center;
@@ -145,11 +171,14 @@ footer ul {
 }
 
 footer a {
-    color: var(--dark);
+    font-size: 12pt;
+    line-height: 18pt;
+    font-weight: var(--ft-main-light);
+    color: var(--color5);
 }
 
 footer a:hover {
-    color: var(--dark);
+    color: var(--white2);
     font-weight: var(--ft-main-bold);
 }
 
@@ -182,17 +211,17 @@ footer a:active {
 }
 
 h3 a {
-    text-decoration: none;
     font-family: var(--font-main);
     color: var(--white2);
     font-size: 16pt;
     font-weight: var(--ft-main-normal);
 }
 
-h3 a:hover {
-    color: var(--color1)
-}
 
 .icon-app {
     width: 100%;
 }
+
+
+
+
