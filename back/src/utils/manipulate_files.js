@@ -194,6 +194,7 @@ exports.addAlbum = (resp, body, params, action) => {
     });
 } // FIN ADD ALBUM
 
+/* NE FONCTIONNE PLUS */
 // fonction permettant de màj un album
 exports.updateAlbum = (resp, params, body, action) => {
     fs.readFile(document, (error, data) => {

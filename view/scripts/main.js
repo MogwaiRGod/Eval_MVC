@@ -57,6 +57,7 @@ $(document).ready(() => {
      * CREATE
      */
 
+    /* PLUS LE TEMPS */
     // fonction permettant de demander à ajouter un album à la BDD
     function addAlbum (service, title, artist, platform, id) {
 
@@ -222,14 +223,49 @@ $(document).ready(() => {
         });
     } // FIN FONCTION SHOW LIBRARY MINI
 
+    
+
 
     /*
      * UPDATE
      */
 
+    /* FONCTION UPDATE NE FONCTIONNE PLUS */
     // fonction permettant de modifier un album de la BDD
-    function updateAlbum (service, title, artist, platform, id) {
+    function updateAlbum (container, service, id, arrayArgs) {
 
+        // On crée l'objet avec les données mises à jour
+        let dataRequest = {};
+        const properties = ["name", "artist", "platform"];
+
+        // on remplit l'objet à envoyer
+        for (let i=0; i<arrayArgs.length; i++) {
+            if (arrayArgs[i][properties[i]]) {
+                dataRequest[properties[i]] =  arrayArgs[i][properties[i]];
+            }
+        }
+
+        console.log(dataRequest)
+
+        $.ajax(
+            {
+            type: "PUT",
+
+            url: apiBaseUrl + "library/" + service + "/" + id,
+
+            data: JSON.parse(dataRequest),
+
+            success: (result) => {
+                // on rappelle la fonction d'affichage pour voir les données mises à jour
+                showLibraryMini(service, container, platform ="");
+
+                // message de màj ça ne foncitionne paaaaaaaaaaaaaaaas >_<
+                setTimeout(() => {  document.getElementById("tmp-aside").textContent = "Album mis à jour avec succès !"; }, 5000);
+            },
+            error: (xhr, status, error) => {
+                document.getElementById("tmp-aside").textContent = error + "Une erreur s'est produite"
+            }
+        });
     }
 
 
@@ -479,11 +515,13 @@ $(document).ready(() => {
                 break;
             case 'update':
                 // si les inputs sont incomplets
-                if (!optionId || !(optionName || optionArtist)) {
+                if (!optionId || !(optionName || optionArtist || optionPlatform)) {
                     document.getElementById("tmp-aside").textContent = "Veuillez remplir les champs obligatoires";
                     break;
                 } else {
+                    console.log("OK")
                     // on invoque la fonction de màj d'album
+                    updateAlbum ($( "#lib-albums" ), optionService, optionId, [{"name": optionName}, {"artist":optionArtist}, {"platform":optionPlatform}]);
                 }
         }
     });
