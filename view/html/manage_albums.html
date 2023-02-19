@@ -54,7 +54,7 @@
                     <select id="menu-service">
                         <option selected disabled>Service</option>
                         <option value="membership">Abonnement</option>
-                        <option value="purchase">Achat</option>
+                        <option value="purchases">Achat</option>
                         <option value="local">Import local</option>
                     </select>
 
@@ -69,8 +69,8 @@
                         <option value="SoundCloud">SoundCloud</option>
                     </select>
 
-                    <label for="menu-purchase" id="label-menu-purchase">Quelle plateforme ?</label>
-                    <select id="menu-purchase">
+                    <label for="menu-purchasse" id="label-menu-purchases">Quelle plateforme ?</label>
+                    <select id="menu-purchases">
                         <option selected disabled>Plateforme</option>
                         <option value="Bandcamp">Bandcamp</option>
                         <option value="Amazon Music">Amazon Music</option>
@@ -89,11 +89,11 @@
                     
                     <form id="last-form-albums">
                         <h3 id="h3-action"><span id="action">{Action}</span> un album</h3>
-                        <label>ID</label>
-                        <input type="text" id="ipt-id" placeholder="ID d'enregistrement (optionnel)">
-                        <label>Nom*</label>
+                        <label>ID*</label>
+                        <input type="text" id="ipt-id" placeholder="ID d'enregistrement">
+                        <label>Nom</label>
                         <input type="text" id="ipt-name" placeholder="Nom">
-                        <label>Artiste*</label>
+                        <label>Artiste</label>
                         <input type="text" id="ipt-artist" placeholder="Artiste">
                         <aside id="default-aside">*Champs obligatoires</aside>
                     </form>
@@ -103,27 +103,21 @@
             <!-- Affichage de la bibliothèque sélectionnée -->
             <div class="containers"  id="sub-container-albums">
                 <h3>Bibliothèque</h3>
-                <ul id="albums-filter" class="ul-filter">
-                    <li>Filtrer par</li>
-                    <li value="all">Afficher tout</li>
-                    <li value="local">Fichiers importés</li>
-                    <li value="membership">Abonnements</li>
-                    <li value="purchase">Achats</li>
-                </ul>
                 <div class="container-body" id="lib-albums">
                     <h4>{Service}</h4>
-                    <table>
+                    <table id="table-mini">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Album</th>
                                 <th>Artiste</th>
-                                <th>Service</th>
+                                <th id="th-platform">Plateforme</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tbody-mini">
                         </tbody>
                     </table>
+                    <p id="p-manage-albums">La bibliothèque demandée est vide</p>
                 </div>
             </div>
         </div>

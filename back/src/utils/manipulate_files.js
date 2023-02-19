@@ -111,7 +111,7 @@ exports.readFile = (resp, params) => {
                     return;
                 } else {
                     // on sélectionne tous les albums étant sur la plateforme demandée
-                    const albums = existingData[params.service].filter(album => album["platform"].toLowerCase() === params.platform.toLowerCase());
+                    const albums = existingData[params.service].filter(album => album["platform"] === params.platform);
                     // si le filtre n'a retourné aucun album
                     if (albums === undefined) {
                         resp.status(404).send({message: errors["404_vide"]});
