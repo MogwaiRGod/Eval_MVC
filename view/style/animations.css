@@ -1,0 +1,53 @@
+/* Survol/arrêt du survol du logo de la nav */
+
+/* Logo */
+@keyframes hoverLogo {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.7) rotate(60deg);
+    } 
+}
+
+@keyframes leaveLogo {
+    from {
+        transform: scale(0.7) rotate(60deg);
+    }
+    to {
+        transform: scale(1) rotate(0deg);
+    } 
+}
+
+/* Texte du logo */
+@keyframes hoverLogoText {
+    from {
+        color: var(--color1);
+    }
+    to {
+        color: var(--color2);
+    } 
+}
+
+@keyframes leaveLogoText {
+    from {
+        color: var(--color2);
+    }
+    to {
+        color: var(--color1);
+    } 
+}
+
+
+/* 
+ * Animation de la barre de progression de musique 
+ */
+
+@keyframes progressMusic {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    } 
+}

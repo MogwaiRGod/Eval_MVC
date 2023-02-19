@@ -1,0 +1,459 @@
+/* 
+ * Style des parties réutilisables du site et des objets récurrents
+ */
+
+
+/* 
+ * OBJETS RECURRENTS
+ */
+
+/* Listes à points */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Liens */
+a:link,
+a:visited {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Séparations */
+hr {
+    position: relative;
+    margin: 10px 0;
+    color: var(--color5);
+    left: 2%;
+    width: 95%;
+
+}
+
+/* Labels */
+label {
+    color: var(--white);
+    font-size: 16pt;
+    margin: 20px 0 10px;
+}
+
+/* Menus dropdown */
+select {
+    background: var(--dark2);
+    color: var(--white2);
+    font-weight: var(--ft-main-light);
+    padding: 10px 0 10px 20px;
+    font-size: 12pt;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Champs d'input */
+input {
+    background: var(--dark2);
+    font-weight: var(--ft-main-light);
+    font-size: 12pt;
+    padding: 5px 5px 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: var(--color5);
+    outline: none;
+}
+
+input:focus {
+    color: var(--white);
+}
+
+/* Boutons */
+button {
+    border: none;
+    background: var(--white2);
+    color: var(--dark);
+    font-weight: var(--ft-main-normal);
+    font-size: 14pt;
+    font-family: var(--font-main);
+    padding: 1% 2% 1%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--white);
+    color: var(--dark2);
+}
+
+button:active {
+    background: var(--color2);
+    color: var(--mid-dark);
+}
+
+/* Tableaux */
+table {
+    margin-bottom: 30px;
+}
+
+tbody {
+    font-size: 10pt;
+    font-weight: var(--ft-main-light);
+}
+
+tr {
+    line-height: 16pt;
+}
+
+
+/*
+ * PARTIES PRINCIPALES
+ */
+
+/* BODY */
+body {
+    margin: 0;
+    background: var(--dark);
+    color: var(--white);
+    font-family: var(--font-main);
+    font-weight: var(--ft-main-normal);
+    width: 100vw;
+    height: 100vh;
+}
+
+
+/* BARRE DE NAV */
+nav {
+    background: var(--dark);
+    height: 30px;
+    color: var(--white);
+    display: flex;
+    flex-direction: row;
+    padding: 20px 0;
+}
+
+#ul-nav-container {
+    width: 100%;
+    display: inline-block;
+    padding: 0;
+}
+
+nav ul li{
+    display: inline-block;
+}
+
+#ul-nav2 {
+    position: relative;
+    right: 5%;
+    float: right;
+}
+
+
+/* logo */
+#nav-logo {
+    position: relative;
+    left: 5%;
+
+}
+
+#nav-logo:hover{
+    cursor: pointer;
+}
+
+#icon-nav-logo {
+    fill: var(--color1);
+}
+
+#nav-link-logo{
+    color: var(--color1);
+    text-transform: uppercase;
+    font-family: var(--font-display);
+    font-size: 20pt;
+}
+
+#icon-nav-logo {
+    margin-right: 10px;
+}
+
+/* toutes ls icônes */
+
+.svg-nav {
+    width: 30px;
+}
+
+/* barre de recherche */
+#search {
+    background: var(--dark2);
+    font-weight: var(--ft-main-light);
+    width: 200px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    color: var(--color5);
+    outline: none;
+}
+
+#search:focus {
+    color: var(--white2);
+}
+
+#icon-search {
+    position: relative;
+    left: -35px;
+    width: 25px;
+    top: 7px;
+}
+
+#icon-search:hover {
+    cursor: pointer;
+}
+
+#icon-search:active {
+    cursor: pointer;
+}
+
+/* liens (gérer mes albums) */
+.link-nav {
+    text-transform: uppercase;
+    color: var(--white);
+}
+
+.link-nav:hover {
+    color: var(--white2);
+}
+
+.link-nav:active {
+    color: var(--color3);
+}
+
+#ul-nav li{
+    margin: 0 5px;
+}
+
+
+/* FOOTER */
+
+footer {
+    height: 200px;
+    margin-top: 30px;
+    padding: 2% 0;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    gap: 5%;
+}
+
+footer ul {
+    top: 20px;
+    position: relative;
+    left: 5%;
+
+}
+
+footer a {
+    font-size: 12pt;
+    line-height: 20pt;
+    font-weight: var(--ft-main-light);
+    color: var(--color5);
+}
+
+footer a:hover {
+    color: var(--white2);
+    font-weight: var(--ft-main-bold);
+}
+
+footer a:active {
+    color: var(--color2);
+    font-weight: var(--ft-main-bold);
+}
+
+
+
+/* SECTION D'APPS */
+
+#container2 {
+    margin-top: 100px;
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+
+#main-apps {
+    width: 80%;
+    height: fit-content;
+    background: var(--dark2);
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    padding: 5% 10% 50% 10%;
+}
+
+h3 a {
+    font-family: var(--font-main);
+    color: var(--white2);
+    font-size: 16pt;
+    font-weight: var(--ft-main-normal);
+}
+
+h3 a:hover {
+    color: var(--color1);
+    font-weight: var(--ft-main-bold);
+}
+
+
+.icon-app {
+    width: 100%;
+}
+
+
+/*
+ * CONTAINTERS RECURRENTS
+ * = sous forme titre (+ sous-titre) (+barre de filtre) et sous-container (+ tableau)
+ */
+
+ .containers {
+    margin-top: 50px;
+    position: relative;
+    color: var(--white);
+    width: 50%;
+    left: 5%;
+    min-height: 100vh;
+    height: fit-content;
+}
+
+/* Titre du container/de la page */
+.containers h3 {
+    margin: 0;
+    font-size: 34pt;
+    font-weight: var(--ft-main-normal);
+}
+
+/* Sous-titre */
+.containers h4 {
+    font-size: 14pt;
+    line-height: 22pt;
+    margin: 0 0 20px;
+}
+
+/* Barre de filtres */
+.ul-filter {
+    /* visibility: hidden; */
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.filter-hover li {
+    width: fit-content;
+}
+
+.filter-hover:hover {
+    cursor: pointer;
+    font-weight: var(--ft-main-bold);
+    color: var(--white2);
+}
+
+/* Corps du container */
+.container-body {
+    /* display: none; */
+    color: var(--white);
+    margin-top: 20px;
+    position: relative;
+    background: var(--mid-dark);
+    width: 97%;
+    padding: 3% 0 3% 3%;
+    height: fit-content;
+}
+
+.containers h4,
+.container-body h4 {
+    margin: 0;
+    width: fit-content;
+}
+
+/* Titre du corps */
+.container-body h4 {
+    font-size: 24pt;
+    font-weight: var(--ft-main-normal);
+    margin-bottom: 10px;
+}
+
+/* Tableau du container */
+.container-body table {
+    width: 97%;
+    border-spacing: 0;
+}
+
+.container-body table thead th {
+    border-bottom: 1px solid var(--white);
+    font-size: 12pt;
+    line-height: 36pt;
+    text-align: left;
+}
+
+
+/* BARRE D'ECOUTE DE MUSIQUE */
+
+#bar {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 1000;
+}
+
+#music-bar {
+    color: var(--color4);
+    background: var(--color3);
+    font-size: 12pt;
+    font-weight: var(--ft-main-light);
+    gap: 10%;
+}
+
+
+#progress-bar {
+    background: var(--dark2);
+    height: 5px;
+    width: 100%;
+}
+
+#progressed {
+    background: var(--color4);
+    height: 5px;
+    animation: progressMusic 180s infinite;
+}
+
+#music-bar,
+#music-bar-icons,
+#track {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#track {
+    width: 100%;
+    gap: 1%;
+}
+
+#music-bar-icons {
+    position: relative;
+    left: 5%;
+    gap: 1%;
+}
+
+#song-playing-name {
+    font-weight: var(--ft-main-bold);
+}
+
+#skip-next {
+    transform: rotate(180deg);
+}
+
+.icon-bar {
+    width: 20px;
+    height: auto;
+}
+
+
+

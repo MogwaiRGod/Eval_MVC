@@ -2,11 +2,15 @@
     <html lang="fr">
 
     <head>
-        <meta name="description" content="Dashoboard de gestion de musique">
+        <meta name="description" content="Dashboard de gestion de musique">
         <meta charset="utf-8">
         <title>Dashboard Totify</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Diane">
+        <!-- Favicon -->
+        <link rel="icon" href="../imgs/music.svg" />
+        <!-- lien permettant d'utiliser AJAX (jQuery) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <!-- STYLE -->
         <!-- Import de typos Google  -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,22 +18,26 @@
         <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Big+Shoulders+Display:wght@500&display=swap" rel="stylesheet">  
         <!-- Import des feuilles de style -->
         <link rel="stylesheet" href="../style/root.css">
+        <!-- Pour les pages ayant la nav/footer/section d'apps/body normal -->
+        <link rel="stylesheet" href="../style/main.css">
+        <link rel="stylesheet" href="../style/animations.css">
         <link rel="stylesheet" href="../style/style.css">
-
+        <!-- Fonction jQuery -->
+        <script src="../scripts/main.js"></script>
     </head>
 
     <body>
-        
+        <!-- A mettre sur toutes les pages-->
         <header>
             <nav>
                 <ul id="ul-nav-container">
-                    <li id="nav-logo"><svg id="icon-nav-logo" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M14.25 36V12h3v24Zm8.25 8V4h3v40ZM6 28v-8h3v8Zm24.75 8V12h3v24ZM39 28v-8h3v8Z"/></svg><a id="nav-link-logo" href="index.html">Totify</a></li>
+                    <li id="nav-logo" ><img class="svg-nav" id="icon-nav-logo" src="../imgs/music.svg" alt="Logo Totify"><a id="nav-link-logo" href="index.html">Totify</a></li>
                     <li id="ul-nav2">
-                        <ul>
-                            <li id="search-bar"><input id="search" type="text" placeholder="Rechercher"><a href="search.html"><svg id="icon-search" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M39.8 41.95 26.65 28.8q-1.5 1.3-3.5 2.025-2 .725-4.25.725-5.4 0-9.15-3.75T6 18.75q0-5.3 3.75-9.05 3.75-3.75 9.1-3.75 5.3 0 9.025 3.75 3.725 3.75 3.725 9.05 0 2.15-.7 4.15-.7 2-2.1 3.75L42 39.75Zm-20.95-13.4q4.05 0 6.9-2.875Q28.6 22.8 28.6 18.75t-2.85-6.925Q22.9 8.95 18.85 8.95q-4.1 0-6.975 2.875T9 18.75q0 4.05 2.875 6.925t6.975 2.875Z"/></svg></a></li>
+                        <ul id="ul-nav">
+                            <li id="search-bar"><input id="search" type="text" placeholder="Rechercher"><a href="search.html"><img alt="Icône de loupe" class="svg-nav hover-nav" id="icon-search" src="../imgs/search.svg"></a></li>
                             <li id="nav-manage-albums"><a class="link-nav" href="manage_albums.html">Gérer mes albums</a></li>
-                            <li id="nav-library"><a href="library.html"><svg id="icon-library" class="icon-nav" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.3 31.35q2.05 0 3.5-1.425 1.45-1.425 1.45-3.475v-12.6h5.8v-3h-7.8V22.7q-.55-.45-1.325-.7-.775-.25-1.625-.25-1.95 0-3.3 1.375-1.35 1.375-1.35 3.325 0 2 1.35 3.45 1.35 1.45 3.3 1.45ZM13 38q-1.2 0-2.1-.9-.9-.9-.9-2.1V7q0-1.2.9-2.1.9-.9 2.1-.9h28q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h28V7H13v28Zm-6 9q-1.2 0-2.1-.9Q4 42.2 4 41V10h3v31h31v3Zm6-37v28V7Z"/></svg></a></li>
-                            <li id="nav-account"><a href="maintenance.html"><svg id="icon-settings"  class="icon-nav"xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="m19.4 44-1-6.3q-.95-.35-2-.95t-1.85-1.25l-5.9 2.7L4 30l5.4-3.95q-.1-.45-.125-1.025Q9.25 24.45 9.25 24q0-.45.025-1.025T9.4 21.95L4 18l4.65-8.2 5.9 2.7q.8-.65 1.85-1.25t2-.9l1-6.35h9.2l1 6.3q.95.35 2.025.925Q32.7 11.8 33.45 12.5l5.9-2.7L44 18l-5.4 3.85q.1.5.125 1.075.025.575.025 1.075t-.025 1.05q-.025.55-.125 1.05L44 30l-4.65 8.2-5.9-2.7q-.8.65-1.825 1.275-1.025.625-2.025.925l-1 6.3ZM24 30.5q2.7 0 4.6-1.9 1.9-1.9 1.9-4.6 0-2.7-1.9-4.6-1.9-1.9-4.6-1.9-2.7 0-4.6 1.9-1.9 1.9-1.9 4.6 0 2.7 1.9 4.6 1.9 1.9 4.6 1.9Zm0-3q-1.45 0-2.475-1.025Q20.5 25.45 20.5 24q0-1.45 1.025-2.475Q22.55 20.5 24 20.5q1.45 0 2.475 1.025Q27.5 22.55 27.5 24q0 1.45-1.025 2.475Q25.45 27.5 24 27.5Zm0-3.5Zm-2.2 17h4.4l.7-5.6q1.65-.4 3.125-1.25T32.7 32.1l5.3 2.3 2-3.6-4.7-3.45q.2-.85.325-1.675.125-.825.125-1.675 0-.85-.1-1.675-.1-.825-.35-1.675L40 17.2l-2-3.6-5.3 2.3q-1.15-1.3-2.6-2.175-1.45-.875-3.2-1.125L26.2 7h-4.4l-.7 5.6q-1.7.35-3.175 1.2-1.475.85-2.625 2.1L10 13.6l-2 3.6 4.7 3.45q-.2.85-.325 1.675-.125.825-.125 1.675 0 .85.125 1.675.125.825.325 1.675L8 30.8l2 3.6 5.3-2.3q1.2 1.2 2.675 2.05Q19.45 35 21.1 35.4Z"/></svg></a></li>
+                            <li id="nav-library"><a href="library.html"><img alt="Icône de bibliothèque" class="hover-nav svg-nav" src="../imgs/library.svg"></a></li>
+                            <li id="nav-account"><a href="maintenance.html"><img alt="Icône de rouage" class="hover-nav svg-nav" src="../imgs/settings.svg"></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -38,58 +46,64 @@
         </header>
 
     <main>
-        <div class="container1">
-            <section id="section-logo">
-                <div id="container-logo">
-                    <svg id="icon-main-logo" clip-rule="evenodd" fill-rule="evenodd" viewBox="0 0 100 100" stroke-linejoin="round" stroke-miterlimit="2" xmlns="http://www.w3.org/2000/svg"><path d="M14.25 36V12h3v24Zm8.25 8V4h3v40ZM6 28v-8h3v8Zm24.75 8V12h3v24ZM39 28v-8h3v8Z"/></svg>
-                    <h1 class="main-logo" id="h1-totify">Totify</h1>
-                </div>
-                <h2 class="main-logo">Toute votre musique au même endroit</h2>
-            </section>
+        <div id="container1">
+            <div id="sub-container1">
+                <section id="section-logo">
+                    <div id="container-logo">
+                        <img src="../imgs/music.svg" id="h1-logo" alt="Logo Totify">
+                        <h1 class="main-logo" id="h1-totify">Totify</h1>
+                    </div>
+                    <h2 class="main-logo">Toute votre musique au même endroit</h2>
+                </section>
 
-            <div id="menu-welcome-page">
-                <ul>
-                    <li><a href="manage_albums.html">Gérér mes albums</a><svg class="icon-expand-menu" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m24 30.75-12-12 2.15-2.15L24 26.5l9.85-9.85L36 18.8Z"/></svg></li>
-                    <li><a href="library.html">Bibliothèque</a><svg class="icon-expand-menu" xmlns="http://www.w3.org/2000/svg"><path d="m24 30.75-12-12 2.15-2.15L24 26.5l9.85-9.85L36 18.8Z"/></svg></li>
-                </ul>
+                <div id="menu-welcome-page">
+                    <ul>
+                        <li><a href="manage_albums.html">Gérér mes albums</a></li>
+                        <li><a href="library.html">Bibliothèque</a></li>
+                    </ul>
+                </div>
             </div>
-            
-            <img src="../imgs/person_music-04.png" alt="Personne écoutant de la musique sur son téléphone">
+            <img src="../imgs/person_music-04.png" alt="Personne écoutant de la musique sur son téléphone" id="img-index">
         </div>
 
-            <!-- Div contenant la barre d'écoute de musique en cours / je la ferai uniquement si j'ai le temps -->
-            <!-- <div id="music-bar">
-                <div id="progress-bar"></div>
-                <ul id="music-bar-icons">
-                    <li><svg id="skip-previous" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M11 36V12h3v24Zm26 0L19.7 24 37 12Zm-3-12Zm0 6.25v-12.5L24.95 24Z"/></svg></li>
-                    <li><svg id="icon-play" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M16 37.85v-28l22 14Zm3-14Zm0 8.55 13.45-8.55L19 15.3Z"/></svg></li>
-                    <li><svg id="icon-pause" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M28.25 38V10H36v28ZM12 38V10h7.75v28Z"/></svg></li>
-                    <li><svg id="icon-stop" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M16.5 31.5h15v-15h-15ZM24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 23.95q0-4.1 1.575-7.75 1.575-3.65 4.3-6.35 2.725-2.7 6.375-4.275Q19.9 4 24.05 4q4.1 0 7.75 1.575 3.65 1.575 6.35 4.275 2.7 2.7 4.275 6.35Q44 19.85 44 24q0 4.1-1.575 7.75-1.575 3.65-4.275 6.375t-6.35 4.3Q28.15 44 24 44Zm.05-3q7.05 0 12-4.975T41 23.95q0-7.05-4.95-12T24 7q-7.05 0-12.025 4.95Q7 16.9 7 24q0 7.05 4.975 12.025Q16.95 41 24.05 41ZM24 24Z"/></svg></li>
-                    <li><svg id="icon-shuffle" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M29.05 40.5v-3h6.25l-9.2-9.15 2.1-2.15 9.3 9.2v-6.35h3V40.5Zm-19.45 0-2.1-2.15 27.9-27.9h-6.35v-3H40.5V18.9h-3v-6.3Zm10.15-18.7L7.5 9.6l2.15-2.15 12.25 12.2Z"/></svg></li>
-                    <li><svg id="icon-repeat" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="m14 44-8-8 8-8 2.1 2.2-4.3 4.3H35v-8h3v11H11.8l4.3 4.3Zm-4-22.5v-11h26.2l-4.3-4.3L34 4l8 8-8 8-2.1-2.2 4.3-4.3H13v8Z"/></svg></li>
-                    <li><svg id="to-download" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M14 34h20v-3H14Zm9.85-6.3 7.9-7.85-2.1-2.1-4.25 4.2V12h-3v9.95l-4.25-4.2-2.1 2.1ZM24 44q-4.1 0-7.75-1.575-3.65-1.575-6.375-4.3-2.725-2.725-4.3-6.375Q4 28.1 4 24q0-4.15 1.575-7.8 1.575-3.65 4.3-6.35 2.725-2.7 6.375-4.275Q19.9 4 24 4q4.15 0 7.8 1.575 3.65 1.575 6.35 4.275 2.7 2.7 4.275 6.35Q44 19.85 44 24q0 4.1-1.575 7.75-1.575 3.65-4.275 6.375t-6.35 4.3Q28.15 44 24 44Zm0-3q7.1 0 12.05-4.975Q41 31.05 41 24q0-7.1-4.95-12.05Q31.1 7 24 7q-7.05 0-12.025 4.95Q7 16.9 7 24q0 7.05 4.975 12.025Q16.95 41 24 41Zm0-17Z"/></svg></li>
-                </ul>
+            <!-- Div contenant la barre d'écoute de musique en cours / 
+            je terminerai les animations/fonctionnalités si j'ai le temps ^^ -->
+            <div id="bar">
+                <div id="progress-bar">
+                    <div id="progressed"></div>
+                </div>
+                <div id="music-bar">
+                    <ul id="music-bar-icons">
+                        <li><img class="icon-bar" id="skip-previous"  src="../imgs/skip_previous.svg" alt="Morceau précédent"></li>
+                        <li><img class="icon-bar" id="play" src="../imgs/play.svg" alt="Play"></li>
+                        <li><img class="icon-bar" id="skip-next" src="../imgs/skip_previous.svg" alt="Morceau suivant"></li>
+                        <li><img class="icon-bar" id="stop" src="../imgs/stop.svg" alt="Arrêter"></li>
+                        <li><img class="icon-bar" id="shuffle" src="../imgs/shuffle.svg" alt="Shuffle"></li>
+                        <li><img class="icon-bar" id="repeat" src="../imgs/repeat.svg" alt="Ecoute dans l'ordre"></li>
+                        <li><img class="icon-bar" id="offline" src="../imgs/download_for_offline.svg" alt="Télécharger localement"></li>
+                    </ul>
 
-                <svg id="icon-music-playing" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M14.25 36V12h3v24Zm8.25 8V4h3v40ZM6 28v-8h3v8Zm24.75 8V12h3v24ZM39 28v-8h3v8Z"/></svg>
-                <p id="song-playing"><span id="song-playing-name">Ultraviolence</span> — <span id="song-playing-artist">You Me At Six</span></p>
-                <svg id="favorite" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="m24 41.95-2.05-1.85q-5.3-4.85-8.75-8.375-3.45-3.525-5.5-6.3T4.825 20.4Q4 18.15 4 15.85q0-4.5 3.025-7.525Q10.05 5.3 14.5 5.3q2.85 0 5.275 1.35Q22.2 8 24 10.55q2.1-2.7 4.45-3.975T33.5 5.3q4.45 0 7.475 3.025Q44 11.35 44 15.85q0 2.3-.825 4.55T40.3 25.425q-2.05 2.775-5.5 6.3T26.05 40.1ZM24 38q5.05-4.65 8.325-7.975 3.275-3.325 5.2-5.825 1.925-2.5 2.7-4.45.775-1.95.775-3.9 0-3.3-2.1-5.425T33.5 8.3q-2.55 0-4.75 1.575T25.2 14.3h-2.45q-1.3-2.8-3.5-4.4-2.2-1.6-4.75-1.6-3.3 0-5.4 2.125Q7 12.55 7 15.85q0 1.95.775 3.925.775 1.975 2.7 4.5Q12.4 26.8 15.7 30.1 19 33.4 24 38Zm0-14.85Z"/></svg>
+                    <div id="track">
+                        <img class="icon-bar" src="../imgs/music_bar.svg" alt="Icône de musique">
+                        <p id="song-playing"><span id="song-playing-name">Ultraviolence</span> — <span id="song-playing-artist">You Me At Six</span></p>
+                        <img class="icon-bar" id="favourite" src="../imgs/favourite.svg" alt="Ajouter aux favoris">
+                    </div>
+                </div>
+            </div>
 
-            </div> -->
-            
         <div id="container2">
-            <div id="empty-div"></div>
             <div id="main-apps">
                 <div>
-                    <svg id="icon-library" xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.3 31.35q2.05 0 3.5-1.425 1.45-1.425 1.45-3.475v-12.6h5.8v-3h-7.8V22.7q-.55-.45-1.325-.7-.775-.25-1.625-.25-1.95 0-3.3 1.375-1.35 1.375-1.35 3.325 0 2 1.35 3.45 1.35 1.45 3.3 1.45ZM13 38q-1.2 0-2.1-.9-.9-.9-.9-2.1V7q0-1.2.9-2.1.9-.9 2.1-.9h28q1.2 0 2.1.9.9.9.9 2.1v28q0 1.2-.9 2.1-.9.9-2.1.9Zm0-3h28V7H13v28Zm-6 9q-1.2 0-2.1-.9Q4 42.2 4 41V10h3v31h31v3Zm6-37v28V7Z"/></svg></a></li>
-                    <h3><a href="manage_albums.html">Gérer mes albums</a></h3>
+                    <img class="icon-app app" alt="Icône de bibliothèque" src="../imgs/library_hover.svg">
+                    <h3><a class="app" href="manage_albums.html">Gérer mes albums</a></h3>
                 </div>
                 <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M14.25 36V12h3v24Zm8.25 8V4h3v40ZM6 28v-8h3v8Zm24.75 8V12h3v24ZM39 28v-8h3v8Z"/></svg>
-                    <h3><a href="maintenance.html">Ecouter de la musique</a></h3>
+                    <img class="icon-app app waves" alt="Icône d'ondes de musique" src="../imgs/music_app.svg">
+                    <h3><a class="app waves" href="maintenance.html">Ecouter de la musique</a></h3>
                 </div>
                 <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M11 40q-1.2 0-2.1-.9Q8 38.2 8 37v-7.15h3V37h26v-7.15h3V37q0 1.2-.9 2.1-.9.9-2.1.9Zm13-7.65-9.65-9.65 2.15-2.15 6 6V8h3v18.55l6-6 2.15 2.15Z"/></svg>
-                    <h3><a href="maintenance.html">Télécharger l'application</a></h3>
+                    <img class="icon-app app dl" alt="Icône d'ondes de téléchargement" src="../imgs/download_app.svg">
+                    <h3><a class="app dl" href="maintenance.html">Télécharger l'application</a></h3>
                 </div>
             </div>
         </div>
@@ -97,6 +111,7 @@
 
     </main>
 
+    <!-- A mettre sur toutes les pages -->
     <footer>
         <ul>
             <li><a href="index.html">TOTIFY</a></li>
@@ -114,8 +129,7 @@
         </ul>
     </footer>
 
-        <script>
-        </script>
-
+        <!-- Script contenant les animations/changements d'état etc. des éléments graphiques du site -->
+        <script src="../scripts/anims.js"></script>
     </body>
 </html>

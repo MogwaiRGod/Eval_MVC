@@ -2,11 +2,15 @@
     <html lang="fr">
 
     <head>
-        <meta name="description" content="Dashoboard de gestion de musique">
+        <meta name="description" content="Dashboard de gestion de musique">
         <meta charset="utf-8">
         <title>Dashboard Totify — Gérer mes albums</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Diane">
+        <!-- Favicon -->
+        <link rel="icon" href="../imgs/music.svg" />
+        <!-- lien permettant d'utiliser AJAX (jQuery) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <!-- STYLE -->
         <!-- Import de typos Google  -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,10 +18,167 @@
         <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Big+Shoulders+Display:wght@500&display=swap" rel="stylesheet">  
         <!-- Import des feuilles de style -->
         <link rel="stylesheet" href="../style/root.css">
+        <!-- Pour les pages ayant la nav/footer/section d'apps/body normal -->
+        <link rel="stylesheet" href="../style/main.css">
+        <link rel="stylesheet" href="../style/animations.css">
         <link rel="stylesheet" href="../style/style.css">
-
+        <!-- Fonction jQuery -->
+        <script src="../scripts/main.js"></script>
     </head>
 
 <body>
-    
+    <header>
+        <nav>
+            <ul id="ul-nav-container">
+                <li id="nav-logo" ><img class="svg-nav" id="icon-nav-logo" src="../imgs/music.svg" alt="Logo Totify"><a id="nav-link-logo" href="index.html">Totify</a></li>
+                <li id="ul-nav2">
+                    <ul id="ul-nav">
+                        <li id="search-bar"><input id="search" type="text" placeholder="Rechercher"><a href="search.html"><img alt="Icône de loupe" class="svg-nav hover-nav" id="icon-search" src="../imgs/search.svg"></a></li>
+                        <li id="nav-manage-albums"><a class="link-nav" href="manage_albums.html">Gérer mes albums</a></li>
+                        <li id="nav-library"><a href="library.html"><img alt="Icône de bibliothèque" class="hover-nav svg-nav" src="../imgs/library.svg"></a></li>
+                        <li id="nav-account"><a href="maintenance.html"><img alt="Icône de rouage" class="hover-nav svg-nav" src="../imgs/settings.svg"></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+        <!-- Div du formulaire -->
+        <div id="container-manage-albums">
+            <div class="containers" id="container-form">
+                <div id="col1">
+                    <h3>Gérer mes albums</h3>
+                    <label for="menu-service" id="label-menu-service">Quel service ?</label>
+                    <select id="menu-service">
+                        <option selected disabled>Service</option>
+                        <option value="membership">Abonnement</option>
+                        <option value="purchases">Achat</option>
+                        <option value="local">Import local</option>
+                    </select>
+
+                    <label for="menu-membership" id="label-menu-membership">Quelle plateforme ?</label>
+                    <select id="menu-membership">
+                        <option selected disabled>Plateforme</option>
+                        <option value="Deezer">Deezer</option>
+                        <option value="Spotify">Spotify</option>
+                        <option value="Tidal">Tidal</option>
+                        <option value="iHeartRadio">iHeartRadio</option>
+                        <option value="YouTube Music">YouTube Music</option>
+                        <option value="SoundCloud">SoundCloud</option>
+                    </select>
+
+                    <label for="menu-purchasse" id="label-menu-purchases">Quelle plateforme ?</label>
+                    <select id="menu-purchases">
+                        <option selected disabled>Plateforme</option>
+                        <option value="Bandcamp">Bandcamp</option>
+                        <option value="Amazon Music">Amazon Music</option>
+                        <option value="iTunes">iTunes</option>
+                        <option value="7Digital">7Digital</option>
+                        <option value="Bleep">Bleep</option>
+                    </select>
+
+                    <label for="menu-action" id="label-menu-action">Que veux-tu faire ?</label>
+                    <select id="menu-action">
+                        <option selected disabled>Action</option>
+                        <option value="add">Ajouter un album</option>
+                        <option value="delete">Supprimer un album</option>
+                        <option value="update">Modifier un album</option>
+                    </select>
+                    
+                    <form id="last-form-albums">
+                        <h3 id="h3-action"><span id="action">{Action}</span> un album</h3>
+                        <label>ID*</label>
+                        <input type="text" id="ipt-id" placeholder="ID d'enregistrement">
+                        <label>Nom</label>
+                        <input type="text" id="ipt-name" placeholder="Nom">
+                        <label>Artiste</label>
+                        <input type="text" id="ipt-artist" placeholder="Artiste">
+                        <aside id="default-aside">*Champs obligatoires</aside>
+                    </form>
+                </div>
+                <button id="btn-form">Valider</button>
+            </div>
+            <!-- Affichage de la bibliothèque sélectionnée -->
+            <div class="containers"  id="sub-container-albums">
+                <h3>Bibliothèque</h3>
+                <div class="container-body" id="lib-albums">
+                    <h4>{Service}</h4>
+                    <table id="table-mini">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Album</th>
+                                <th>Artiste</th>
+                                <th id="th-platform">Plateforme</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-mini">
+                        </tbody>
+                    </table>
+                    <p id="p-manage-albums">La bibliothèque demandée est vide</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="bar">
+            <div id="progress-bar">
+                <div id="progressed"></div>
+            </div>
+            <div id="music-bar">
+                <ul id="music-bar-icons">
+                    <li><img class="icon-bar" id="skip-previous"  src="../imgs/skip_previous.svg" alt="Morceau précédent"></li>
+                    <li><img class="icon-bar" id="play" src="../imgs/play.svg" alt="Play"></li>
+                    <li><img class="icon-bar" id="skip-next" src="../imgs/skip_previous.svg" alt="Morceau suivant"></li>
+                    <li><img class="icon-bar" id="stop" src="../imgs/stop.svg" alt="Arrêter"></li>
+                    <li><img class="icon-bar" id="shuffle" src="../imgs/shuffle.svg" alt="Shuffle"></li>
+                    <li><img class="icon-bar" id="repeat" src="../imgs/repeat.svg" alt="Ecoute dans l'ordre"></li>
+                    <li><img class="icon-bar" id="offline" src="../imgs/download_for_offline.svg" alt="Télécharger localement"></li>
+                </ul>
+
+                <div id="track">
+                    <img class="icon-bar" src="../imgs/music_bar.svg" alt="Icône de musique">
+                    <p id="song-playing"><span id="song-playing-name">Ultraviolence</span> — <span id="song-playing-artist">You Me At Six</span></p>
+                    <img class="icon-bar" id="favourite" src="../imgs/favourite.svg" alt="Ajouter aux favoris">
+                </div>
+            </div>
+        </div>
+
+        <div id="container2">
+            <div id="main-apps">
+                <div>
+                    <img class="icon-app app lib" alt="Icône de bibliothèque" src="../imgs/library_hover.svg">
+                    <h3><a class="app lib" href="manage_albums.html">Gérer mes albums</a></h3>
+                </div>
+                <div>
+                    <img class="icon-app app waves" alt="Icône d'ondes de musique" src="../imgs/music_app.svg">
+                    <h3><a class="app waves" href="maintenance.html">Ecouter de la musique</a></h3>
+                </div>
+                <div>
+                    <img class="icon-app app dl" alt="Icône d'ondes de téléchargement" src="../imgs/download_app.svg">
+                    <h3><a class="app dl" href="maintenance.html">Télécharger l'application</a></h3>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <ul>
+            <li><a href="index.html">TOTIFY</a></li>
+            <li><a href="manage_albums.html">Gérer mes albums</a></li>
+            <li><a href="library.html">Bibliothèques</a></li>
+            <li><a href="maintenance.html">Playlists</a></li>
+        </ul>
+        <ul>
+            <li><a href="maintenance.html#">A propos</a></li>
+            <li><a href="maintenance.html">Contact</a></li>
+        </ul>
+        <ul>
+            <li><a href="maintenance.html">Vie privée</a></li>
+            <li><a href="maintenance.html">Termes et conditions</a></li>
+        </ul>
+    </footer>
+
+    <script src="../scripts/anims.js"></script>
 </body>
