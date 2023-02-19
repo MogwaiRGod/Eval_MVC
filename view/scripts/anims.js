@@ -66,4 +66,4 @@ document.querySelectorAll(".hover-nav").forEach(item => {
 
 // });
 
-
+/* A faire si j'ai le temps : animations de la barre de musique, animation du bouton */

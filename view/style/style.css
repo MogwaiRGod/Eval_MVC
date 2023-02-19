@@ -226,12 +226,3 @@
 #menu-action {
     display: none;
 }
-
-#skip-next {
-    transform: rotate(180deg);
-}
-
-.icon-bar {
-    width: 20px;
-    height: auto;
-}

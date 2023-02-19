@@ -24,7 +24,7 @@ a:visited {
 /* Séparations */
 hr {
     position: relative;
-    margin: 20px 0;
+    margin: 10px 0;
     color: var(--color5);
     left: 2%;
     width: 95%;
@@ -88,6 +88,19 @@ button:active {
     color: var(--mid-dark);
 }
 
+/* Tableaux */
+table {
+    margin-bottom: 30px;
+}
+
+tbody {
+    font-size: 10pt;
+    font-weight: var(--ft-main-light);
+}
+
+tr {
+    line-height: 16pt;
+}
 
 
 /*
@@ -331,11 +344,11 @@ h3 a:hover {
     width: 100%;
 }
 
-.ul-filter li {
+.filter-hover li {
     width: fit-content;
 }
 
-.ul-filter li:hover {
+.filter-hover:hover {
     cursor: pointer;
     font-weight: var(--ft-main-bold);
     color: var(--white2);
@@ -376,6 +389,7 @@ h3 a:hover {
     border-bottom: 1px solid var(--white);
     font-size: 12pt;
     line-height: 36pt;
+    text-align: left;
 }
 
 
@@ -385,6 +399,7 @@ h3 a:hover {
     position: fixed;
     width: 100%;
     bottom: 0;
+    z-index: 1000;
 }
 
 #music-bar {
