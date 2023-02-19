@@ -21,10 +21,7 @@ Diane (MogwaiRGod)
 2. [Contenu](#contenu)
     1. [Organigramme](#organigramme-du-projet)
     2. [Contenu détaillé](#contenu-détaillé)
-3. Fonctionnement
-    1. Back
-    2. Front
-4. Utilisation
+3. Utilisation
 {à rédiger}
 
 
