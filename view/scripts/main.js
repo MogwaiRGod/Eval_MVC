@@ -131,14 +131,14 @@ $(document).ready(() => {
             success: (result) => {
                 /* result est l'objet JSON contenant la bibliohèque complète sous forme d'objet JSON */
                 // si la requête est un succès
-                $(`container-${filter}`).css('display', 'block');
+                $(`container-${filter}`).style.display = 'block';
             },
             error: (xhr, status, error) => {
                 // sinon
                 // on sort le tableau du document 
-                $(`#container-${filter}`).children('table').css('display', 'none');
+                $(`#container-${filter}`).children('table').style.display = 'none';
                 // on affiche un message d'erreur
-                $(`#container-${filter}`).children('p').css('display', 'block');
+                $(`#container-${filter}`).children('p').style.display = 'block';
             }
         });
     } // FIN FONCTION SHOW LIBRARY FILTER
@@ -169,5 +169,148 @@ $(document).ready(() => {
             showLibraryFilter(filter);
         });
     });
+
+    /* 
+     * Event listeners du formulaire de la page de gestion des albums
+     */
+
+    // J'ai plus le temps, le code est fait à l'arrache déso ! -> code à 0% optimisé :S
+
+    /* Pour le formulaire : les informations obligatoires à entrer varient selon l'action choisie -> pas le
+    temps de le faire */
+
+    const dropdownService = document.getElementById("menu-service");
+    let optionService; let optionPlatform; let optionAction;
+
+    dropdownService.addEventListener('change', (event) => {
+        optionService = $("#menu-service").val();
+
+        document.getElementById("label-menu-membership").style.display = 'none';
+        document.getElementById("menu-membership").style.display = 'none';
+        document.getElementById("label-menu-purchase").style.display = 'none';
+        document.getElementById("menu-purchase").style.display = 'none';
+        document.getElementById("label-menu-action").style.display = 'none';
+        document.getElementById("menu-action").style.display = 'none';
+
+        switch (optionService) {
+            case 'membership':
+                document.getElementById("label-menu-membership").style.display = 'block';
+                document.getElementById("menu-membership").style.display = 'block';
+                break;
+            case 'purchase':
+                document.getElementById("label-menu-purchase").style.display = 'block';
+                document.getElementById("menu-purchase").style.display = 'block';
+                break;
+            case 'local':
+                // Pas de plateforme si on a choisi un import local
+                optionPlatform = "";
+                document.getElementById("label-menu-action").style.display = 'block';
+                document.getElementById("menu-action").style.display = 'block';
+
+                // On peut directement ouvrir le menu d'options
+                document.getElementById("menu-action").addEventListener('change', () => {
+                    optionAction = $("#menu-action").val();
+
+                    switch (optionAction) {
+                        case 'add':
+                            document.getElementById("action").textContent = "Ajouter";
+                            break;
+                        case 'delete':
+                            document.getElementById("action").textContent = "Supprimer";
+                            break;
+                        case 'update':
+                            document.getElementById("action").textContent = "Mettre à jour";
+                            break;
+                    }
+
+                    document.getElementById("last-form-albums").style.display = 'flex';
+                    document.getElementById("btn-form").style.display = 'block';
+                });
+                break;
+        }
+    });
+
+    // déploiement du formulaire si on a choisi le service abonnement
+    document.getElementById("menu-membership").addEventListener('change', (event) => {
+        optionPlatform = $("#menu-membership").val();
+
+        document.getElementById("label-menu-action").style.display = 'block';
+        document.getElementById("menu-action").style.display = 'block';
+
+        document.getElementById("menu-action").addEventListener('change', () => {
+            optionAction = $("#menu-action").val();
+
+            switch (optionAction) {
+                case 'add':
+                    document.getElementById("action").textContent = "Ajouter";
+                    break;
+                case 'delete':
+                    document.getElementById("action").textContent = "Supprimer";
+                    break;
+                case 'update':
+                    document.getElementById("action").textContent = "Mettre à jour";
+                    break;
+            }
+
+            document.getElementById("last-form-albums").style.display = 'flex';
+            document.getElementById("btn-form").style.display = 'block';
+        });
+    });
+
+    // déploiement du formulaire si on a choisi le service achat
+    document.getElementById("menu-purchase").addEventListener('change', (event) => {
+        optionAction = $("#menu-action").val();
+
+        document.getElementById("label-menu-action").style.display = 'block';
+        document.getElementById("menu-action").style.display = 'block';
+
+        document.getElementById("menu-action").addEventListener('change', () => {
+            switch (optionAction) {
+                case 'add':
+                    document.getElementById("action").textContent = "Ajouter";
+                    break;
+                case 'delete':
+                    document.getElementById("action").textContent = "Supprimer";
+                    break;
+                case 'update':
+                    document.getElementById("action").textContent = "Mettre à jour";
+                    break;
+            }
+
+            document.getElementById("last-form-albums").style.display = 'flex';
+            document.getElementById("btn-form").style.display = 'block';
+        });
+    });
+
+    // avant l'envoi du formulaire (= au clic du bouton Valider) on va récupérer les inputs
+    // et vérifier leur intégrité
+    document.getElementById("btn-form").addEventListener('click', () => {
+        const optionId = $("#ipt-id").val();
+        const optionName = $("#ipt-name").val();
+        const optionArtist = $("#ipt-artist").val();
+
+        console.log(optionId);
+
+        switch (optionAction) {
+            case 'add':
+                if (!optionName || !optionArtist) {
+                    document.getElementById("default-aside").textContent = "Veuillez remplir les champs obligatoires";
+                    document.getElementById("default-aside").setAttribute('id', 'tmp-aside');
+                }
+                break;
+            case 'delete':
+                if (!optionId) {
+                    document.getElementById("default-aside").textContent = "Veuillez remplir les champs obligatoires";
+                    document.getElementById("default-aside").setAttribute('id', 'tmp-aside');
+                }
+                break;
+            case 'update':
+                if (!optionId || !(optionName || optionArtist)) {
+                    document.getElementById("default-aside").textContent = "Veuillez remplir les champs obligatoires";
+                    document.getElementById("default-aside").setAttribute('id', 'tmp-aside');
+                }
+        }
+    });
+
 
 }); // FIN DOCUMENT.READY()
