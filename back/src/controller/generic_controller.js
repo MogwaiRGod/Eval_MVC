@@ -47,7 +47,6 @@ exports.addAlbum = (request, response) => {
 exports.readLibrary = (request, response) => {
     // on récupère les arguments éventuels
     const params = request.params;
-
     // on affiche ce qui est demandé
     manipFiles.readFile(response, params);
     return;

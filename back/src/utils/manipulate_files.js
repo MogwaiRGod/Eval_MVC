@@ -80,10 +80,16 @@ exports.readFile = (resp, params) => {
             return;
         } else {
             const existingData = JSON.parse(data);
+            let nbItems = 0;
+
             // si on a demandé à afficher l'intégralité de la bibliothèque, sans filtre
             if (!params.platform & !params.service) {
+                // on détermine si les bibliothèques sont vides
+                for (i in existingData) {
+                    nbItems += existingData[i].length;
+                }
                 // si la bibliothèque est vide
-                if (!existingData.length){
+                if (!nbItems){
                     resp.status(404).send({message: errors["404_tab"]});
                     return;
                 } 

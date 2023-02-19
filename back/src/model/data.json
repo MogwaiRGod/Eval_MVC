@@ -30,8 +30,7 @@
       "name": "How Did We Get So Dark",
       "artist": "Royal Blood",
       "platform": "iTunes"
-    },
-    { "name": "test", "artist": "ok", "platform": "oui", "id": 10 }
+    }
   ],
   "purchases": [
     {
@@ -61,9 +60,9 @@
     }
   ],
   "local": [
-    { "id": 0, "name": "Opposites", "artist": "Biffy Clyro" },
-    { "id": 1, "name": "Songs of Praise", "artist": "Shame" },
-    { "id": 2, "name": "Norman Fucking Rockwell", "artist": "Lana Del Rey" },
-    { "id": 3, "name": "As The Love Continues", "artist": "Mogwai" }
+    {"id": 0, "name": "Opposites" , "artist": "Biffy Clyro"},
+    {"id": 1, "name": "Songs of Praise" , "artist": "Shame"},
+    {"id": 2, "name": "Norman Fucking Rockwell" , "artist": "Lana Del Rey"},
+    {"id": 3, "name": "As The Love Continues" , "artist": "Mogwai"}
   ]
 }
