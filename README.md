@@ -24,7 +24,7 @@ Diane (MogwaiRGod)
 3. Fonctionnement
     1. Back
     2. Front
-4. [Utilisation](#utilisation)
+4. Utilisation
 {à rédiger}
 
 
