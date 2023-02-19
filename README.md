@@ -28,8 +28,6 @@ Diane (MogwaiRGod)
 {à rédiger}
 
 
-==========
-
 <br>
 <hr>
 <br>
