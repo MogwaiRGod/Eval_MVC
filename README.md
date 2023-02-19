@@ -20,9 +20,15 @@ Diane (MogwaiRGod)
         2. [Installation](#installation)
 2. [Contenu](#contenu)
     1. [Organigramme](#organigramme-du-projet)
-    1. [Contenu détaillé](#contenu-détaillé)
-3. [Utilisation](#utilisation)
+    2. [Contenu détaillé](#contenu-détaillé)
+3. Fonctionnement
+    1. Back
+    2. Front
+4. [Utilisation](#utilisation)
 {à rédiger}
+
+
+==========
 
 <br>
 <hr>
@@ -46,8 +52,7 @@ Diane (MogwaiRGod)
 | fs | 0.0.1-security | Module permettant de manipuler des fichiers |
 | body-parser | 1.20.1 | Middleware utile à express ; il lui permet de créer/lire/manipuler des données HTTP POST |
 | cors | 2.8.5 | Module permettant d'autoriser une API REST de récupérer les requêtes d'une page web |
-| nodemon | 2.0.20 | Module rechargeant automatiquement l'application à chaque changement (sauvegarde) d'un des fichiers qui la composent |
-
+| nodemon | 2.0.20 | Module rechargeant automatiquement l'application à chaque changement (sauvegarde) d'un des fichiers qui la composent 
 
 ## Fonctionnement
 
@@ -69,7 +74,9 @@ npm start
 ```
 - ``rs`` pour redémarrer
 - ``CTRL+C`` pour quitter
-3. Aller dans le dossier view et ouvrir le dashboard : **index.html**
+
+4. Aller dans le dossier view et ouvrir le dashboard : **index.html**
+
 
 <br>
 
@@ -147,6 +154,5 @@ Le dossier **/imgs** contient les images affichées sur le site.
 
 <br>
 <hr>
-<br>
 
-# Utilisation
+<br>
