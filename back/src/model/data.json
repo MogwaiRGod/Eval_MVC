@@ -1,1 +1,68 @@
-{"membership":[{"id":3,"name":"Anywhere But Here","artist":"Sorry","platform":"Deezer"}],"purchases":[{"id":1,"name":"925","artist":"Sorry","platform":"Bandcamp"},{"id":3,"name":"Blue Banisters","artist":"Lana Del Rey","platform":"Amazon Music"}],"local":[{"id":0,"name":"Opposites","artist":"Biffy Clyro"},{"id":1,"name":"Songs of Praise","artist":"Shame"},{"id":2,"name":"Norman Fucking Rockwell","artist":"Lana Del Rey"},{"id":3,"name":"As The Love Continues","artist":"Mogwai"},{"id":5,"name":"Cox Arena, San Diego, CA, 2007","artist":"T00L"}]}
+{
+  "membership": [
+    {
+      "id": 0,
+      "name": "Truth Decay",
+      "artist": "You Me at Six",
+      "platform": "Spotify"
+    },
+    { "id": 1, "name": "RUSH!", "artist": "Måneskin", "platform": "Spotify" },
+    {
+      "id": 2,
+      "name": "SUCKAPUNCH",
+      "artist": "You Me at Six",
+      "platform": "Deezer"
+    },
+    {
+      "id": 3,
+      "name": "Anywhere But Here",
+      "artist": "Sorry",
+      "platform": "Deezer"
+    },
+    {
+      "id": 4,
+      "name": "You Heat Me Up, You Cool Me Down",
+      "artist": "King Krule",
+      "platform": "YouTube Music"
+    },
+    {
+      "id": 5,
+      "name": "How Did We Get So Dark",
+      "artist": "Royal Blood",
+      "platform": "iTunes"
+    },
+  ],
+  "purchases": [
+    {
+      "id": 0,
+      "name": "Drunk Tank Pink",
+      "artist": "Shame",
+      "platform": "Bandcamp"
+    },
+    { "id": 1, "name": "925", "artist": "Sorry", "platform": "Bandcamp" },
+    {
+      "id": 2,
+      "name": "Desire",
+      "artist": "Come to Dolly",
+      "platform": "Bandcamp"
+    },
+    {
+      "id": 3,
+      "name": "Blue Banisters",
+      "artist": "Lana Del Rey",
+      "platform": "Amazon Music"
+    },
+    {
+      "id": 4,
+      "name": "How Did We Get So Dark",
+      "artist": "Royal Blood",
+      "platform": "iTunes"
+    }
+  ],
+  "local": [
+    { "id": 0, "name": "Opposites", "artist": "Biffy Clyro" },
+    { "id": 1, "name": "Songs of Praise", "artist": "Shame" },
+    { "id": 2, "name": "Norman Fucking Rockwell", "artist": "Lana Del Rey" },
+    { "id": 3, "name": "As The Love Continues", "artist": "Mogwai" }
+  ]
+}
