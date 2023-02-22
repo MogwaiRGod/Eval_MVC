@@ -24,8 +24,8 @@ Diane (MogwaiRGod)
     1. [Organigramme](#organigramme-du-projet)
     2. [Contenu détaillé](#contenu-détaillé)
 3. [Utilisation](#utilisation)
-    1. [Back](#back)
-    2. [Front](#front)
+    1. [Back](#partie-back)
+    2. [Front](#partie-front)
 4. [Débogage](#débogage)
 
 
@@ -167,10 +167,10 @@ Le dossier **/imgs** contient les images affichées sur le site.
 Utilisation
 ===
 
-Back
+Partie back
 ---
 
-Front
+Partie front
 ---
 
 <br>
@@ -207,9 +207,6 @@ Améliorations à effectuer pour la V1.1 beta
 | V1.0 | Front | manage_albums.html | Ajout de la fonctionnalité d'ajout d'album | en attente |
 | V1.0 | Front | toutes | Ajout de la fonctionnalité de recherche | en attente |
 | V1.0 | Front | toutes | Au survol des svg en milieu de page, le svg devrait changer de couleur comme le texte | en attente |
-| V1.0 | Front | toute | Au survol de la barre d'écoute de musique <br> : 
-- la barre et ses composants vont changer de couleur
-- changement de chanson quand une se termine
-- la barre va rester la même sur chaque page (plutôt que de se rembobiner à chaque changement de page) | en attente |
+| V1.0 | Front | toute | Au survol de la barre d'écoute de musique <br> : - la barre et ses composants vont changer de couleur <br> - changement de chanson quand une se termine <br> - la barre va rester la même sur chaque page (plutôt que de se rembobiner à chaque changement de page) | en attente |
 | V1.0 | Front | maintenance.html | Ajouter l'animation des bulles (points de suspension) pour la page de site en maintenance | en attente |
  
