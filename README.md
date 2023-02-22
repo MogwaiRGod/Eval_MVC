@@ -24,8 +24,8 @@ Diane (MogwaiRGod)
     1. [Organigramme](#organigramme-du-projet)
     2. [Contenu détaillé](#contenu-détaillé)
 3. [Utilisation](#utilisation)
-    1. Back(#back)
-    2. Front(#front)
+    1. [Back](#back)
+    2. [Front](#front)
 4. [Débogage](#débogage)
 
 
@@ -188,7 +188,7 @@ Bugs à corriger pour la V1.1 beta
 {en cours de rédaction}
 
 | Version logicielle | Etage de sortie | Bug identifié | Statut |
-| :---: | :--- | :--- | :--- | :---: |
+| :---: | :--- | :--- | :---: |
 | V1.0 | Back | La mise à jour d'un album occasion une erreur dans la console "body[prop] est undefined" | en cours |
 | V1.0 | Front | Au survol des svg en milieu de page, le svg s'agrandit et crée un décalage. | en attente |
 
