@@ -184,8 +184,7 @@ Débogage
 
 ### Bugs
 
-Bugs à corriger pour la V1.1 beta
-{en cours de rédaction}
+Bugs à corriger pour la **V1.1 beta**
 
 | Version logicielle | Etage de sortie | Page | Bug identifié | Statut |
 | :---: | :---: | :--- | :---: | :---: |
@@ -199,14 +198,13 @@ Bugs à corriger pour la V1.1 beta
 
 ### Upgrades
 
-Améliorations à effectuer pour la V1.1 beta 
-{en cours de rédaction}
+Améliorations à effectuer pour la **V1.1 beta **
 
 | Version logicielle | Etage de sortie | Page | Upgrade | Statut |
 | :---: | :---: | :---: | :--- | :----:  |
 | V1.0 | Front | manage_albums.html | Ajout de la fonctionnalité d'ajout d'album | en attente |
 | V1.0 | Front | toutes | Ajout de la fonctionnalité de recherche | en attente |
 | V1.0 | Front | toutes | Au survol des svg en milieu de page, le svg devrait changer de couleur comme le texte | en attente |
-| V1.0 | Front | toute | Au survol de la barre d'écoute de musique <br> : - la barre et ses composants vont changer de couleur <br> - changement de chanson quand une se termine <br> - la barre va rester la même sur chaque page (plutôt que de se rembobiner à chaque changement de page) | en attente |
+| V1.0 | Front | toute | Au survol de la barre d'écoute de musique : <br>  - la barre et ses composants vont changer de couleur <br> - changement de chanson quand une se termine <br> - la barre va rester la même sur chaque page (plutôt que de se rembobiner à chaque changement de page) | en attente |
 | V1.0 | Front | maintenance.html | Ajouter l'animation des bulles (points de suspension) pour la page de site en maintenance | en attente |
  
