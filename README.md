@@ -182,8 +182,23 @@ Front
 Débogage
 ===
 
+### Bugs
+
+Bugs à corriger pour la V1.1 beta
+{en cours de rédaction}
+
 | Version logicielle | Etage de sortie | Bug identifié | Statut |
 | :---: | :--- | :--- | :--- | :---: |
 | V1.0 | Back | La mise à jour d'un album occasion une erreur dans la console "body[prop] est undefined" | en cours |
-| V1.0 | Back | La mise à jour d'un album occasion une erreur dans la console "body[prop] est undefined" | en cours |
+| V1.0 | Front | Au survol des svg en milieu de page, le svg s'agrandit et crée un décalage. | en attente |
+
+### Upgrades
+
+Améliorations à effectuer pour la V1.1 beta 
+{en cours de rédaction}
+
+| V1.0 | Front | Au survol des svg en milieu de page, le svg devrait changer de couleur comme le texte | en attente |
+| V1.0 | Front | Au survol de la barre d'écoute de musique <br> : 
+- la barre et sees composants vont changer de couleur
+- | en attente |
  
