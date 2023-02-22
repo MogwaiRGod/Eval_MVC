@@ -5,6 +5,8 @@ Plateforme centrale de gestion et d'écoute de musique
 
 > Application centralisant toute la musique de l'utilisateur en provenance d'autres plateformes, ainsi que la musique importée localement.
 
+> Version : **1.0 beta**
+
 ### Auteur
 Diane (MogwaiRGod)
 
@@ -21,8 +23,10 @@ Diane (MogwaiRGod)
 2. [Contenu](#contenu)
     1. [Organigramme](#organigramme-du-projet)
     2. [Contenu détaillé](#contenu-détaillé)
-3. Utilisation
-{à rédiger}
+3. [Utilisation](#utilisation)
+    1. Back(#back)
+    2. Front(#front)
+4. [Débogage](#débogage)
 
 
 <br>
@@ -53,15 +57,23 @@ Diane (MogwaiRGod)
 
 ### **Projet**
 > **Totify** est une application permettant de gérer et d'écouter ses albums provenant de diverses plateformes (de streaming, d'e-commerce), sur une seule application les centralisant toutes. <br>
-> Application **client-serveur**, c'est-à-dire consistant en une partie front et une partie back distinctes. <br>
+> Application**client-serveur**, c'est-à-dire consistant en une partie front et une partie back distinctes. <br>
 * La partie **front** est l'interface client permettant de gérer ses albums de musique, en les modifiant, les supprimant, en en ajoutant...
-* La partie **back** consiste en une API type traitant des requêtes envoyées par la partie client. L'API va traiter les requêtes en appliquant des actions de type CRUD à la base de données.
+* La partie **back** consiste en une API type **REST** traitant des requêtes envoyées par la partie client. L'API va traiter les requêtes en appliquant des actions de type CRUD à la base de données.
 
 ### **Installation**
 1. Ouvrir un terminal et se positionner dans le dossier ``/back`` 
 2. Vérifier que **Node.js** est installé en entrant la commande suivante dans un terminal (situé dans le dossier) <br>
 ```
 node -v
+```
+3. Installer les modules nécessaires (voir [modules](#modules))
+```
+npm i body-parser express nodemon cors fs
+    3.1 Vérifier que les modules ont bien été installés ; sinon, les installer un par un e.g 
+    ```
+    npm i body-parser
+    ```
 ```
 3. Lancer **l'API** back-end
 ```
@@ -151,3 +163,27 @@ Le dossier **/imgs** contient les images affichées sur le site.
 <hr>
 
 <br>
+
+Utilisation
+===
+
+Back
+---
+
+Front
+---
+
+<br>
+
+<hr>
+
+<br>
+
+Débogage
+===
+
+| Version logicielle | Etage de sortie | Bug identifié | Statut |
+| :---: | :--- | :--- | :--- | :---: |
+| V1.0 | Back | La mise à jour d'un album occasion une erreur dans la console "body[prop] est undefined" | en cours |
+| V1.0 | Back | La mise à jour d'un album occasion une erreur dans la console "body[prop] est undefined" | en cours |
+ 
