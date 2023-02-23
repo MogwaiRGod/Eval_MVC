@@ -72,7 +72,6 @@ exports.updateAlbum = (request, response) => {
     const params = request.params;
     const body = request.body;
     const action = "upd";
-    console.log(request.params)
 
     manipFiles.updateAlbum(response, params, body, action);
     return;
