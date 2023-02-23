@@ -250,17 +250,17 @@ $(document).ready(() => {
         $.ajax(
             {
             type: "PUT",
-
             url: apiBaseUrl + "library/" + service + "/" + id,
-
-            data: JSON.parse(dataRequest),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            data: JSON.stringify(dataRequest),
 
             success: (result) => {
                 // on rappelle la fonction d'affichage pour voir les données mises à jour
                 showLibraryMini(service, container, platform ="");
 
-                // message de màj ça ne foncitionne paaaaaaaaaaaaaaaas >_<
-                setTimeout(() => {  document.getElementById("tmp-aside").textContent = "Album mis à jour avec succès !"; }, 5000);
+                // affiche bien que l'album est mis à jour, pourtant rien ne se passe dans le jeu de données ?
+                document.getElementById("tmp-aside").textContent = JSON.stringify(result.message);
             },
             error: (xhr, status, error) => {
                 document.getElementById("tmp-aside").textContent = error + "Une erreur s'est produite"
@@ -519,7 +519,6 @@ $(document).ready(() => {
                     document.getElementById("tmp-aside").textContent = "Veuillez remplir les champs obligatoires";
                     break;
                 } else {
-                    console.log("OK")
                     // on invoque la fonction de màj d'album
                     updateAlbum ($( "#lib-albums" ), optionService, optionId, [{"name": optionName}, {"artist":optionArtist}, {"platform":optionPlatform}]);
                 }
