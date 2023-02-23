@@ -110,7 +110,7 @@ graph TD
     AA --> E(server.js)
     C[view] --> F[scripts]
     A[racine] -->  AA[back]
-        A --> S(README.md)
+    A --> S(README.md)
     A --> C[view]
     C[view] --> G[style]
     C[view] --> V[imgs]
@@ -122,9 +122,7 @@ graph TD
     W --> WX(library.html)
     G[style] --> H(root.css)
     G[style] --> I(style.css)
-    F[scripts] --> J(main.js)
-    
-    
+    F[scripts] --> J(main.js)   
 ```
 
 <br>
