@@ -263,7 +263,7 @@ $(document).ready(() => {
                 document.getElementById("tmp-aside").textContent = JSON.stringify(result.message);
             },
             error: (xhr, status, error) => {
-                document.getElementById("tmp-aside").textContent = error + "Une erreur s'est produite"
+                document.getElementById("tmp-aside").textContent = error + "Une erreur s'est produite";
             }
         });
     }
