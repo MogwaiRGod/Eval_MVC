@@ -204,11 +204,16 @@ exports.updateAlbum = (resp, params, body, action) => {
             const existingData = JSON.parse(data);
             // si le tableau est vide
             if (!existingData[params.service].length) {
-                resp.status(200).send({message: errors["404_tab"]});
+                resp.status(404).send({message: errors["404_tab"]});
                 return;
             } else {
                 // sélection de l'item
                 let album = existingData[params.service].find(e => e.id === parseInt(params.id));
+                // si l'item n'existe pas
+                if (album === undefined) {
+                    resp.status(404).send({message: errors["404_id"]});
+                    return;
+                }
                 // màj de l'item
                 for (let prop in body){
                     album[prop] = body[prop];
