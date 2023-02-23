@@ -184,9 +184,9 @@ Débogage
 
 Bugs à corriger pour la **V1.1 beta**
 
-| Version logicielle | Etage de sortie | Page | Bug identifié | Statut |
-| :---: | :---: | :---: | :--- | :---: |
-| V1.0 | Back | manage_albums.html | La mise à jour d'un album occasionne une erreur dans la console "body[prop] est undefined" | en cours |
+| Version logicielle | Etage de sortie | Page | Bug identifié | Statut | Commentaire |
+| :---: | :---: | :---: | :--- | :---: | :--- |
+| V1.0 | Back | manage_albums.html | La mise à jour d'un album occasionne une erreur dans la console "body[prop] est undefined" | **corrigé** | Il manquait un envoi d'erreur si l'ID demandé n'était pas attribué |
 | V1.0 | Front | toutes | Au survol des svg en milieu de page, le svg s'agrandit et crée un décalage. | en attente |
 | V1.0 | Front | manage_albums.html | L'event des menus déroulants est 'change' => si le menu déjà sélectionné est celui que l'on souhaite, on est obligé de changer d'option et de revenir | en attente |
 | V1.0 | Front | manage_albums.html | Il n'y a pas de message d'erreur quand on essaie de supprimer un album qui n'existe pas | en attente |
