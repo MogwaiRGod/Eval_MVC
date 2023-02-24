@@ -240,9 +240,10 @@ exports.deleteAlbum = (resp, params, action) => {
             } else {
                 // on détermine l'index de l'item dans le tableau
                 const index = existingData[params.service].findIndex(e => e.id === parseInt(params.id));
+
                 // si l'ID ne correspond à aucun élément
                 if (index === -1) {
-                    resp.status(200).send({message: errors["404_id"]});
+                    resp.status(404).send({message: errors["404_id"]});
                     return;
                 }
                 existingData[params.service].splice(index, 1);
