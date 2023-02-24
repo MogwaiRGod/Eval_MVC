@@ -138,9 +138,12 @@ $(document).ready( () => {
         const optionName = $("#ipt-name").val();
         const optionArtist = $("#ipt-artist").val();
 
-        resetAside();
+        // autre design d'aside pour envoyer une notification
+        if(document.getElementById("default-aside")) {
+            document.getElementById("default-aside").setAttribute('id', 'tmp-aside');
+        }
 
-        switch (optionAction.val()) {
+        switch (optionAction.val()) {  
             case 'add':
                 // si les inputs sont incomplets
                 if (!optionName || !optionArtist) {
