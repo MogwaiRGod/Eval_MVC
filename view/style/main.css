@@ -455,5 +455,13 @@ h3 a:hover {
     height: auto;
 }
 
+.icon-bar:hover {
+    cursor: pointer;
+}
+
+.no-hover:hover {
+    cursor:default;
+}
+
 
 
