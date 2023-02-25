@@ -188,7 +188,7 @@ Bugs à corriger pour la **V1.1 beta**
 | :---: | :---: | :---: | :--- | :---: | :--- |
 | V1.0 | Back | manage_albums.html | La mise à jour d'un album occasionne une erreur dans la console "body[prop] est undefined" | **corrigé** | Il manquait un envoi d'erreur si l'ID demandé n'était pas attribué |
 | V1.0 | Front | toutes | Au survol des svg en milieu de page, le svg s'agrandit et crée un décalage. | en attente | |
-| V1.0 | Front | manage_albums.html | L'event des menus déroulants est 'change' => si le menu déjà sélectionné est celui que l'on souhaite, on est obligé de changer d'option et de revenir | en attente | |
+| V1.0 | Front | manage_albums.html | L'event des menus déroulants est 'change' => si le menu déjà sélectionné est celui que l'on souhaite, on est obligé de changer d'option et de revenir | **reporté**| Pas de solution en vue pour l'instant, ce sera pour la prochaine version |
 | V1.0 | Front | manage_albums.html | Il n'y a pas de message d'erreur quand on essaie de supprimer un album qui n'existe pas | **corrigé** | |
 | V1.0 | Front | manage_albums.html | Il n'y a pas de message d'erreur quand on essaie de modifier un album qui n'existe pas | **corrigé** | |
 | V1.0 | Front | manage_albums.html | Quand on essaie de modifier un album existant avec tous les paramètres remplis, renvoie une erreur "remplir tous les champs obligatoires" | **corrigé** | |
@@ -201,9 +201,9 @@ Améliorations à effectuer pour la **V1.1 beta **
 | Version logicielle | Etage de sortie | Page | Upgrade | Statut | Commentaire |
 | :---: | :---: | :---: | :--- | :----: | :--- |
 | V1.0 | Front | toutes | Réorganisation des fichiers vues et optimisation du code en créant des fonctions | **en cours** | Création de manage_albums.html et début de fonctions |
-| V1.0 | Front | manage_albums.html | Ajout de la fonctionnalité d'ajout d'album | en attente | |
-| V1.0 | Front | toutes | Ajout de la fonctionnalité de recherche | en attente | |
+| V1.0 | Front | manage_albums.html | Ajout de la fonctionnalité d'ajout d'album | **ajoutée** | Fonctionne correctement |
+| V1.0 | Front | toutes | Ajout de la fonctionnalité de recherche | **en cours** | |
 | V1.0 | Front | toutes | Au survol des svg en milieu de page, le svg devrait changer de couleur comme le texte | en attente | |
-| V1.0 | Front | toutes | Au survol de la barre d'écoute de musique : <br>  - la barre et ses composants vont changer de couleur <br> - changement de chanson quand une se termine <br> - la barre va rester la même sur chaque page (plutôt que de se rembobiner à chaque changement de page) | en attente | |
+| V1.0 | Front | toutes | Au survol de la barre d'écoute de musique : <br>  - la barre et ses composants vont changer de couleur <br> - changement de chanson quand une se termine <br> - la barre va rester la même sur chaque page (plutôt que de se rembobiner à chaque changement de page) | **en cours** | |
 | V1.0 | Front | maintenance.html | Ajouter l'animation des bulles (points de suspension) pour la page de site en maintenance | en attente | |
  
