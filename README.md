@@ -70,10 +70,10 @@ node -v
 3. Installer les modules nécessaires (voir [modules](#modules))
 ```
 npm i body-parser express nodemon cors fs
+```
     3.1 Vérifier que les modules ont bien été installés ; sinon, les installer un par un e.g 
 ```
 npm i body-parser
-```
 ```
 3. Lancer **l'API** back-end
 ```
