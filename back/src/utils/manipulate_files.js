@@ -183,8 +183,11 @@ exports.addAlbum = (resp, body, params, action) => {
                      id = this.defineId(existingData[params.service]);
                 }
                 // création de l'item
-                const album = body;
-                album["id"] = parseInt(id);
+                let album = {"id" : parseInt(id)};
+                for (prop in body) {
+                    album[prop] = body[prop];
+                }
+
                 // on l'ajoute à la BDD, dans le tableau attendu
                 existingData[params.service].push(album);
                 // réécriture des données

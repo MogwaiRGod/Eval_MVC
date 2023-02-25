@@ -1,10 +1,12 @@
+/**
+ * VARIABLES
+ */
+//les inputs utilisateur pour chaque menu déroulant
+let optionService; let optionPlatform; let optionAction;
 
-    //les inputs utilisateur pour chaque menu déroulant
-    let optionService; let optionPlatform; let optionAction;
 
 /**
- * FONCTIONS SPECIFIQUES
- * à manage_albums.html
+ * FONCTIONS
  * 
  * 
  * fonction qui reset une mention d'erreur dans les inputs
@@ -70,6 +72,7 @@ function setForm(opt) {
     return;
 } // FIN SET FORM
 
+// fonction qui donne les fonctionnalité au menu de service sélectionné 
 function setMenuPlatform (srvc) {
     // une fois que l'utilisateur a fait son choix de plateforme
     document.getElementById(`menu-${srvc}`).addEventListener('change', function () {
@@ -84,6 +87,7 @@ function setMenuPlatform (srvc) {
     return;
 }
 
+// fonction qui affiche le menu d'actions et lui attribue ses fonctionnalités
 function setMenuAction() {
     // on ouvre le menu d'action
     setMenu('action');
@@ -92,7 +96,6 @@ function setMenuAction() {
     $("#menu-action").on("change", function() {
         // stockage de l'action
         optionAction = $( "#menu-action" );
-        console.log(optionAction.val())
         // affichage du formulaire
         setForm(optionAction.val());
     });
@@ -133,7 +136,7 @@ $(document).ready( () => {
     // avant l'envoi du formulaire (= au clic du bouton Valider) on va récupérer les inputs
     // et vérifier leur intégrité
     document.getElementById("btn-form").addEventListener('click', () => {
-        console.log(optionAction.val())
+        // sélection des inputs
         const optionId = $("#ipt-id").val();
         const optionName = $("#ipt-name").val();
         const optionArtist = $("#ipt-artist").val();
@@ -146,11 +149,12 @@ $(document).ready( () => {
         switch (optionAction.val()) {  
             case 'add':
                 // si les inputs sont incomplets
-                if (!optionName || !optionArtist) {
+                if ((optionService === 'local' && !(optionName && optionArtist)) || (optionService !== 'local' && !(optionName && optionArtist && optionPlatform))) {
                     document.getElementById("tmp-aside").textContent = "Veuillez remplir les champs obligatoires";
                     break;
                 } else {
                     // on invoque la fonction d'ajout d'album à la BDD
+                    addAlbum ($( "#lib-albums" ), optionService, optionName, optionArtist, optionPlatform, optionId);
                 }
                 break;
 

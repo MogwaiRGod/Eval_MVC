@@ -1,6 +1,7 @@
 // chemin à la base de notre API : VERIFIER QUE LE PORT EST LE BON
 const apiBaseUrl = "http://localhost:2000/";
-
+// les conteneurs de biliothèque
+const allContainers = document.getElementsByClassName("containers-lib");
 /*
  * Fichier .js qui contient toutes les fonctions nécessaires au traitement des requêtes envoyées côté client
  * Utilise AJAX (jQuery)
@@ -27,7 +28,6 @@ function addRow(parent, nbCells, lib) {
         }
         // on ajoute la rangée au tableau
         parent.append(newRow);
-        // console.log(lib[i])
     }
     return;
 }
@@ -46,11 +46,42 @@ function addRow(parent, nbCells, lib) {
  * CREATE
  */
 
+// fonction permettant de demander à ajouter un album à la BDD, en précisant l'ID ou non
+function addAlbum (container, service, title, artist, platform, id) {
+    // on détermine la route de la requête selon s'il y a uun id ou pas
+    let route;
+    (id) ? route = apiBaseUrl + "library/" + service + "/" + id : route = apiBaseUrl + "library/" + service;
 
-/* PLUS LE TEMPS */
-// fonction permettant de demander à ajouter un album à la BDD
-function addAlbum (service, title, artist, platform, id) {
+    // de même, on crée la donnée à envoyer
+    let requestBody = {
+        "name": title,
+        "artist": artist,
+    }
 
+    if (service !== 'local') {
+        requestBody["platform"] = platform;
+    } 
+    console.log(requestBody)
+    // requête AJAX
+    $.ajax(
+        {
+        type: "POST",
+        url: route,
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        data: JSON.stringify(requestBody),
+
+        success: (result) => {
+            // on rappelle la fonction d'affichage pour voir les données mises à jour
+            showLibraryMini(service, container, platform ="");
+
+            // message d'ajout
+            document.getElementById("tmp-aside").textContent = JSON.stringify(result.message);
+        },
+        error: (xhr, status, error) => {
+            document.getElementById("tmp-aside").textContent = "Une erreur s'est produite";
+        }
+    });
 }
 
 /*
@@ -134,18 +165,19 @@ function addAlbum (service, title, artist, platform, id) {
             dataType: 'json',
 
             /* 
-                * result correspond à ce que la requête a renvoyé si elle a été un succès
-                */
+             * result correspond à ce que la requête a renvoyé si elle a été un succès
+             */
             success: (result) => {
                 /* result est l'objet JSON contenant la bibliohèque complète sous forme d'objet JSON */
                 // si la requête est un succès
-                console.log(document.getElementById(`container-${filter}`).style.display)
                 document.getElementById(`container-${filter}`).style.display = 'block';
             },
             error: (xhr, status, error) => {
                 // sinon
                 // on sort le tableau du document 
-                $(`#container-${filter}`).children('table').style.display = 'none';
+                if (document.getElementById(`table-${filter}`)) {
+                    $(`#container-${filter}`).children('table').style.display = 'none';
+                }
                 // on affiche un message d'erreur
                 $(`#container-${filter}`).children('p').style.display = 'block';
             }
@@ -155,7 +187,7 @@ function addAlbum (service, title, artist, platform, id) {
     // fonction pour afficher la bibliothèque interactive de la page manage albums
     function showLibraryMini(service, container, platform ="") {
         // on reset le tableau
-        if (document.getElementById("table-mini")) {
+        if (document.getElementById("tbody-mini")) {
             document.getElementById("table-mini").removeChild(document.getElementById("tbody-mini"));
         }
 
@@ -295,19 +327,6 @@ function addAlbum (service, title, artist, platform, id) {
  */
 // fonction qui se lance dès que le document de base est entièrement chargé <=> ready
 $(document).ready(() => {
-    /*
-     * VARIABLES ET CONSTANTES
-     */
-    
-    // les conteneurs de biliothèque
-    const allContainers = document.getElementsByClassName("containers-lib");
-    // détermine quelle page en chargée
-    var loadedPage = location.href.split("/").slice(-1);
-
-
-   
-
-
     /**
      * 
      * EVENT LISTENERS
@@ -317,7 +336,6 @@ $(document).ready(() => {
     /**
      * Event listeners des filtres de la bibliothèque
      */ 
-    if (loadedPage[0] === 'library.html') {
         // affiche toute la bibliothèque à l'ouverture de la page
         showLibrary();
 
@@ -335,6 +353,5 @@ $(document).ready(() => {
                 showLibraryFilter(filter);
             });
         });
-    } // FIN LIBRARY. HTML
 
 }); // FIN DOCUMENT.READY()
