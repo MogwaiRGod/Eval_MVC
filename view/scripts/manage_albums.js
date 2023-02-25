@@ -1,16 +1,18 @@
 /**
  * VARIABLES
  */
-//les inputs utilisateur pour chaque menu déroulant
-let optionService; let optionPlatform; let optionAction;
+
+//les options sélectionnées par l'utilisateur pour chaque menu déroulant
+let optionService; 
+let optionPlatform; 
+let optionAction;
 
 
 /**
  * FONCTIONS
- * 
- * 
- * fonction qui reset une mention d'erreur dans les inputs
  */
+ 
+ // fonction qui réinitialise les mentions d'erreur dans les champs obligatoires
 function resetAside() {
     if (document.getElementById("tmp-aside")) {
         document.getElementById("tmp-aside").setAttribute('id', 'default-aside');
@@ -19,6 +21,7 @@ function resetAside() {
     return;
 }
 
+// fonction qui cache les menus déroulants pas encore utilisés
 function resetManageAlbums() {
     document.getElementById("label-menu-membership").style.display = 'none';
     document.getElementById("menu-membership").style.display = 'none';

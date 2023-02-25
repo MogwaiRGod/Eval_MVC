@@ -170,16 +170,18 @@ function addAlbum (container, service, title, artist, platform, id) {
             success: (result) => {
                 /* result est l'objet JSON contenant la bibliohèque complète sous forme d'objet JSON */
                 // si la requête est un succès
+                console.log(`container-${filter}`)
                 document.getElementById(`container-${filter}`).style.display = 'block';
             },
             error: (xhr, status, error) => {
                 // sinon
                 // on sort le tableau du document 
                 if (document.getElementById(`table-${filter}`)) {
-                    $(`#container-${filter}`).children('table').style.display = 'none';
+                    $( `table-${filter}`).css('display', 'none');
                 }
                 // on affiche un message d'erreur
-                $(`#container-${filter}`).children('p').style.display = 'block';
+                document.getElementById(`container-${filter}`).style.display = 'block';
+                $( `#p-${filter}`).css('display', 'block');
             }
         });
     } // FIN FONCTION SHOW LIBRARY FILTER
@@ -237,6 +239,7 @@ function addAlbum (container, service, title, artist, platform, id) {
                 container.children("table").append(tbody);
                 tbody.setAttribute("id", "tbody-mini");
                 addRow(container.children("table"), nbCells, result);
+                document.getElementById('table-mini').style.display = 'table';
             },
             error: (xhr, status, error) => {
                 // sinon
